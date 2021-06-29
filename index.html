@@ -12,26 +12,27 @@
   <body>
   
     <br /> 
-
-    <ul class="nav justify-content-center">
+    <center>
+    <ul class="nav justify-content-center" style="background-color: cornsilk; opacity: 80%; position: center; text-align: center;">
         <li class="nav-item" style="color: black;">
           <a class="nav-link active" href="#HowItWorks">How it works</a>
         </li>
         <li class="nav-item" style="color: black;">
-          <a class="nav-link" href="#">Upload Images</a>
+          <a class="nav-link" href="#UploadImages">Upload Images</a>
         </li>
         <li class="nav-item" style="color: black;">
-          <a class="nav-link" href="#">View A vs B chart</a>
+          <a class="nav-link" href="#AvBC">A vs B chart</a>
         </li>
         <li class="nav-item" style="color: black;">
-            <a class="nav-link" href="#">Images by rank</a>
+            <a class="nav-link" href="#imbr">Images by rank</a>
         <li class="nav-item" style="color: black;">
-          <a class="nav-link" href="#">Contact</a>
+          <a class="nav-link" href="#contact">Contact us</a>
         </li>
       </ul>
-    
+    </center>
       <br />
       <br />
+
 
     <h1 class = "title"> 
     Pulmonary Patients Prioritiser    
@@ -62,16 +63,56 @@
     </p>
 
 
-      <p class ="description">
-        Upload images by either dragging and dropping or giving individual URL's for images. This tool currently works for 8 images only.
+    <p class ="description">
+        STEP 1: Upload images by either dragging and dropping or giving individual URL's for images. This tool currently works for 8 images only.
       </p>
       <p class ="description">
-          Scroll to A vs B chart. This chart shows a table of comparison of indiviual patients with other patients
+        STEP 2: Scroll to A vs B chart. This chart shows a table of comparison of indiviual patients with other patients
       </p>
       <p class ="description">
-          Scroll to Images by Rank. Based on the A vs B chart, this is a sorted list of patients with the top entry showing the most serious patient. 
+        STEP 3: Scroll to Images by Rank. Based on the A vs B chart, this is a sorted list of patients with the top entry showing the most serious patient. 
       </p>
+    </p>
 
-      
+    <br />
+    <br />
+
+    <h2 id = "UploadImages">
+        Upload Images
+    </h2>
+
+    <center>
+    <button type="button" class = "uploadbutton" onclick="alert('Hello world!')">
+        Browse folder
+    </button>
+    </center>
+
+    <br><br>
+
+    <h2 id = "AvBC">
+        A vs B chart
+    </h2>
+    
+    <br><br>
+
+    <h2 id = "imbr">
+        Images by rank
+    </h2>
+    
+    <br><br>
+
+
+
+
+    <br><br><br>
+    <center id = "contact">
+    <footer>
+    <h2>
+        Contact us
+    </h2>
+    <h4> Email: sumitrj99@gmail.com </h4>
+    </footer>
+    </center>
+
   </body>
 </html>
