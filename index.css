@@ -23,6 +23,29 @@
 	border-right: solid 0.1em #191fc2;
 }
 
+#HowItWorks
+{
+       color: #ade9ed;
+       font-size: 250%;
+       text-align: center;
+}
 
+.description
+{
+       font-size:150%;
+       text-align: center;
+       color: honeydew;
+       padding-left: 10%; padding-right: 10%;
+
+}
+
+.subq
+{
+       font-size:175%;
+       text-align: center;
+       color: honeydew;
+       padding-left: 10%; padding-right: 10%;
+
+}
 
     
