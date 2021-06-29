@@ -51,12 +51,13 @@ border-right: solid 0.1em #191fc2;
 {
     background-color: #e4f2f5;
     color: #042066;
-    font-size: 100%;
+    font-size: 150%;
     opacity: 55%;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border-radius: 20%;
 }
 
 #contact, .contact
