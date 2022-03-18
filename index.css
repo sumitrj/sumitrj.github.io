@@ -8,43 +8,43 @@
     
 .title{
         text-align:center;
-        color: white;
+        color: rgb(8, 8, 8);
         font: sans-serif;
-        font-size: 400%;
+        font-size: 600%;
 }
 
 body
     {  
-    background: radial-gradient(ellipse at center, #5644D4, #32522B);
+    background: radial-gradient(ellipse at center, #f6f6f7, #b4c2b0);
 }
 
-#retype{
+#retype{ 
 color: #abebeb;
-border-right: solid 0.1em #191fc2;
+border-right: solid 0.1em #010211;
 }
 
 #HowItWorks, #UploadImages, #AvBC, #imbr
 {
-   color: #ade9ed;
-   font-size: 250%;
+   color: #032022;
+   font-size: 350%;
    text-align: center;
 }
 
 .description
 {
-   font-size:150%;
-   text-align: center;
-   color: honeydew;
+   font-size:250%;
+   text-align: left;
+   color: rgb(19, 34, 29);
    padding-left: 10%; padding-right: 10%;
-
 }
 
 .subq
 {
-   font-size:175%;
+   font-size:350%;
    text-align: center;
-   color: honeydew;
+   color: rgb(8, 44, 8);
    padding-left: 10%; padding-right: 10%;
+   font: bold;
 }
 
 .uploadbutton
@@ -65,4 +65,42 @@ border-right: solid 0.1em #191fc2;
     color :azure; 
     text-align: center;
     font-size: 90%;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    padding-left: 15%; padding-right: 15%;
+    height: 1000%; /* Should be removed. Only for demonstration */
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    padding-left: 10%; padding-right: 10%;
+  }
+
+.table_contents
+{
+   font-size:200%;
+   text-align: left;
+   color: rgb(19, 34, 29);
+}
+
+.buy_across_all
+{
+   font-size: 275%;
+   text-align: left;
+   color: rgb(19, 34, 29);
+   text-align: center;
+}
+
+.types_and_situations
+{
+   font-size: 300%;
+   text-align: left;
+   color: rgb(19, 34, 29);
+   text-align: center;
 }
