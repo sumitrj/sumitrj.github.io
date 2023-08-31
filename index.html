@@ -1,132 +1,270 @@
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sumit Jahagirdar - Portfolio</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #1a1a1a, #2c2c2c);
+      color: #ffffff;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+    }
+    @media (max-width: 768px) {
+      body {
+        grid-template-columns: 1fr;
+      }
+    }
+    header, nav, section, footer {
+      padding: 1em;
+      text-align: center;
+      border-radius: 10px;
+      margin: 10px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    nav {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    /* Skills */
+    .skill-button {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      border-radius: 5px;
+      margin: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .skill-button:hover {
+      background: rgba(255, 255, 255, 0.5);
+      color: #000000;
+    }
+    /* Subtitle */
+    .subtitle {
+      font-size: 1.5em;
+      font-style: italic;
+      color: #ffcc00; /* Gold */
+    }
+    /* Projects */
+    .project {
+      background: rgba(0, 0, 255, 0.2); /* Blue */
+      margin: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .project:hover {
+      background: rgba(0, 0, 255, 0.4);
+    }
+    /* Publications */
+    .publication {
+      background: rgba(255, 0, 0, 0.2); /* Red */
+      margin: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .publication:hover {
+      background: rgba(255, 0, 0, 0.4);
+    }
+    /* Useless Creations */
+    .useless-creation {
+      background: rgba(0, 255, 0, 0.2); /* Green */
+      margin: 10px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .useless-creation:hover {
+      background: rgba(0, 255, 0, 0.4);
+    }
+  </style>
+</head>
+<body>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://sumitrj.github.io/index.js"></script> 
-    <link rel="stylesheet" type="text/css" href="index.css">
-    <title>
-        Hello world
-    </title>
-  </head>
+  <!-- Header -->
+  <header style="grid-column: 1 / -1; text-align: center;">
+    <h1>Hey there, I'm Sumit Jahagirdar!</h1>
+    <p class="subtitle">I'm the guy who asks a ton of questions to create <b> perfectly balanced </b> AI solutions. Intrigued? Keep scrolling!</p>
+  </header>
 
-  <body>
+  <!-- Navigation -->
+  <nav style="grid-column: 1 / -1;">
+    <a href="#about">Who Am I?</a>
+    <a href="#education">Where Did I Learn?</a>
+    <a href="#skills">What Can I Do?</a>
+    <a href="#publications">Publications</a>
+    <a href="#previous_projects">Previous Projects</a>
+    <a href="#current_projects">Current Projects</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#useless-creations">Just for Fun!</a>
+    <a href="#contact">Wanna Chat?</a>
+  </nav>
 
-
-  
-    <br /> 
-    <center>
-    <ul class="nav justify-content-center" style="background-color: cornsilk; opacity: 80%; position: center; text-align: center;">
-        <li class="nav-item" style="color: black;">
-          <a class="nav-link active" href="#HowItWorks">About us</a>
-        </li>
-        <li class="nav-item" style="color: black;">
-          <a class="nav-link" href="#UploadImages">Sell</a>
-        </li>
-        <li class="nav-item" style="color: black;">
-          <a class="nav-link" href="#AvBC">Contact us</a>
-        </li>
-        <li class="nav-item" style="color: black;">
-            <a class="nav-link" href="#imbr">Buy</a>
-      </ul>
-    </center>x`
-      <br />
-      <br />
-
-
-    <h1 class = "title"> 
-    Allied Partners LLC
-    </h1>
-    <br /> <br />
-    
-    <br />
-    <p class = "subq">
-    Our number one priority is to ensure you find the property you need
-    </p>
-
-    <p class = "description">
-    
-    </p>
-
-    <br />
-
-    <h3 class = "subq">
-      How we operate
-    </h3>
-    <br />
-
-    <p class ="description">
-        <b>Step 1: </b>All properties and situations can vary, we put efforts in best understanding your situation and goals
-      </p>
-      <p class ="description">
-        <b>Step 2</b>: We work together to create a customized, appropriate strategy using the numerous options available with us
-      </p>
-      <p class ="description">
-        <b>Step 3</b>: With help of our relationships with buyers, sellers, investors and lenders, we determine the solution that best fits your situation.
-      </p>
-    </p>
-
-    <br />
-
-    <p class = "buy_across_all"><b>
-      We are interested in ALL
-    </b><p>
-
-      
-    <p class = "types_and_situations"><b>
-      Types and Situations 
-    </b><p>
-      
-    
-    <div class="row", class="description">
-      <div class="column">
-        <li class="table_contents">Apartments</li>
-        <li class="table_contents">Self-Storage</li>
-        <li class="table_contents">Medical</li>
-        <li class="table_contents">Hotel</li>
-        <li class="table_contents">Retail</li>
-        <li class="table_contents">Office</li>
-        <li class="table_contents">Industrial</li>
-        <li class="table_contents">Senior Housing</li>
-        <li class="table_contents">Raw Land</li>
-      </div>
-      <div class="column">
-        <li class="table_contents">Partnership Dissolution?</li>
-        <li class="table_contents">Retirement?</li>
-        <li class="table_contents">Agent unable to sell your property?</li>
-        <li class="table_contents">Behind on payments (or about to be)?</li>
-        <li class="table_contents">Simply want out from underneath the payments?</li>
-        <li class="table_contents">Facing Foreclosure?</li>
-        <li class="table_contents">Behind on maintenance?</li>
-        <li class="table_contents">Property needs rehab work?</li>
-        <li class="table_contents">Divorce?</li>
-        <li class="table_contents">Bankruptcy?</li>
-        <li class="table_contents">Inherited a property and want to turn it into cash</li>     
-      </div>
+  <!-- About -->
+  <section id="about">
+    <h2>So, Who Am I?</h2>
+    <h3>Short ansuwer: I am a Data Scientist who builds AI models and related products</h3>
+    <h3>Long ansuwer</h3>
+    <div class="skill-button">I Balance Model training, Large model usage, shallow model usage, Infrastructure load, and Software complexity</li>
     </div>
+    <div class="skill-button">Even when data is to be processed and analyzed in simplest or the most sophisticated ways</div>
+    <div class="skill-button">Doesn't matter if it is in form of weird images to massively unstructured text</div>
     
+</section>
 
+<section id="skills">
+    <h2>What Skills Do I Bring to the Table?</h2>
+<div class="skill-button">Machine Learning</div>
+<div class="skill-button">Data Science</div>
+<div class="skill-button">Python</div>
+<div class="skill-button">AWS</div>
+<div class="skill-button">Kubernetes</div>
+<div class="skill-button">IoT</div>
+</section>
 
+     <!-- Education -->
+     <section id="education">
+        <h2>I picked my skills while I was at...</h2>
+        <div class="project">
+            <h3>Aidetic for 1.5 years as Data Scientist</h3>
+          </div>
+        <div class="project">
+            <h3>GE Healthcare for 9 months as Software Engineer</h3>
+          </div>
+        <div class="project">
+            <h3>NVIDIA for 9 months as ML Research Intern</h3>
+          </div>
+        <div class="project">
+            <h3>VIT Vellore to study Btech ECE with specialization in IoT</h3>
+          </div>
+          
+        </section>
+        
+        
+        <!-- Experience -->
+        <section id="current_projects">
+            <h2>Recently I have been into ..</h2>
+            <div class="project">
+                <h3>AI based video correction</h3>
+            </div>
+            <div class="project">
+                <h3>LLM based legal context annotator</h3>
+            </div>
+            <div class="project">
+                <h3>AI steel quality assessor</h3>
+            </div>
+            <div class="project">
+                <h3>Tool to extract tables from images</h3>
+            </div>
+            <div class="project">
+                <h3>Highly detailed post-processing of financial documents</h3>
+            </div>
+        </section>
+        
+        <!-- Experience -->
+        <section id="previous_projects">
+          <h2> A couple of years ago, I was upto... </h2>
+          <div class="project">
+            <h3>Weighted Gaussian variants of Class Anchor Clustering Loss function for detection of COVID-19 from Chest X-ray images using Transfer Learning (Internship project @Nvidia)</h3>
+            <p>Developed on-prem SDK and cron via queue for Edison AI Workbench</p>
+            <a href="https://github.com/sumitrj/ChestXray-TransferLearning" target="_blank">Project</a> | <a href="#">See Code</a>
+          </div>
+          <div class="project">
+            <h3>iHearIT: World’s first intelligent hearing aid</h3>
+            <a href="https://github.com/sumitrj/iHearIT" target="_blank">Project</a> | <a href="#">See Code</a>
+          </div>
+          <div class="project">
+            <h3>rClassify: Boolean classifier of Diabetic Reptipathic condition for Fundus images</h3>
+            <a href="https://github.com/sumitrj/rClassify" target="_blank">Project</a> | <a href="#">See Code</a>
+          </div>
+          <div class="project">
+            <h3>Connected-Q: Multi-agent reinforcement learning algorithm</h3>
+            <a href="https://github.com/sumitrj/ConnectedQ-Multi-agent-Reinforcement-Learning-Algorithm" target="_blank">Project</a> | <a href="#">See Code</a>
+          </div>
+      
+        </section>
+        <!-- Skills -->
 
-    <br />
-    <br />
+  <!-- Publications -->
+  <section id="publications">
+    <h2>I Wrote Papers in Undergrad, Read Them?</h2>
+    <div class="publication">
+      <p>Design and Algorithms of the Device to predict Blood Glucose Level based on Saliva Sample using Machine Learning</p>
+      <a href="https://ieeexplore.ieee.org/document/8987866" target="_blank">Read Paper</a> | <a href="https://github.com/sumitrj/DiaBeaTiT" target="_blank">See Code</a>
+    </div>
+    <div class="publication">
+      <p>WiFi-based Indoor Positioning System using Machine Learning and Multi-Node Triangulation Algorithms</p>
+      <a href="https://ieeexplore.ieee.org/document/9225350" target="_blank">Read Paper</a> | <a href="https://github.com/sumitrj/WiFi.Locate" target="_blank">See Code</a>
+    </div>
+    <div class="publication">
+      <p>Failure Prediction systems for IoT connected machines using Machine Learning</p>
+      <a href="https://ieeexplore.ieee.org/document/8987843" target="_blank">Read Paper</a> | <a href="https://github.com/sumitrj/AutoConnect" target="_blank">See Code</a>
+    </div>
+    <div class="publication">
+      <p>Performance Analysis of the Classifiers for Optical Character Recognition</p>
+      <a href="https://ieeexplore.ieee.org/document/9065710" target="_blank">Read Paper</a> | <a href="https://github.com/sumitrj/Devanagari-OCR" target="_blank">See Code</a>
+    </div>
+  </section>
 
-    <center>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfVVTF1DKXhunekrf_GRqsai4qJ485fly0Y-ogUHNifu7IVog/viewform?embedded=true" width="640" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-    <center>
-    <button type="button" class = "uploadbutton" onclick="alert('Hello world!')">
-        See listings
-    </button>
-    </center>
+  <!-- Achievements -->
+  <section id="achievements">
+    <h2>You Might Have Seen Me When I...</h2>
+    <div class="skill-button">Spoke at NVIDIA GTC 2020</div>
+    <div class="skill-button">Was recognized among Top 30 Microsoft Student Partners of APAC</div>
+    <div class="skill-button">Won Aidetic launchpad hackathon</div>
+    <div class="skill-button">Won MLH Mental Health Hackathon</div>
+    <div class="skill-button">Won Startup VIT</div>
+    <div class="skill-button">Won IET's Zonal PATW</div>
+    <div class="skill-button">Came third in GE Healthcare precision health challenge</div>
+  </section>
 
-    <br><br>
-    <center id = "contact">
-    <footer>
-    <h2>
-        Contact us
-    </h2>
-    <h4> Email: abc@gmail.com </h4>
-    </footer>
-    </center>
+  <!-- Other Creations -->
+  <section id="useless-creations">
+    <h2>Cool and Not Completely Useless Creations:</h2>
+    <div class="useless-creation">
+      <h3>AI News Report Video Generator</h3>
+    </div>
+    <div class="useless-creation">
+      <h3>AI Question Paper Creator</h3>
+    </div>
+    <div class="useless-creation">
+      <h3>Whistle to Tune</h3>
+    </div>
+  </section>
 
-  </body>
+  <!-- Contact -->
+  <section id="contact" style="grid-column: 1 / -1;">
+    <h2>Like What You See? Let's Chat!</h2>
+    <p>Email: sumitrj99@gmail.com</p>
+  </section>
+
+  <!-- Footer -->
+  <footer style="grid-column: 1 / -1;">
+    <p>© 2023 Sumit Jahagirdar. All rights reserved. Thanks for stopping by!</p>
+  </footer>
+
+</body>
 </html>
