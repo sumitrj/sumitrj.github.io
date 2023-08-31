@@ -21,6 +21,13 @@
         grid-template-columns: 1fr;
       }
     }
+
+    @media (min-width: 769px) {
+      nav {
+        display: flex;
+        gap: 20px; /* adjust this value to your needs */
+      }
+    }
     header, nav, section, footer {
       padding: 1em;
       text-align: center;
@@ -75,6 +82,14 @@
       cursor: pointer;
       transition: background 0.3s ease;
     }
+    .nav-button {
+      background: rgba(0, 0, 255, 0.2); /* Blue */
+      margin: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
     .project:hover {
       background: rgba(0, 0, 255, 0.4);
     }
@@ -116,41 +131,140 @@
       background: rgba(123, 147, 154, 0.2);
     }
     .header-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+  .button-container {
+    display: none; /* Hide on computer version */
+  }
+
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+      /* Hide hamburger icon */
+      .hamburger {
+        display: block;
+      }
+      
+      /* Hide normal navigation menu */
+      nav {
+        display: none;
+      }
     }
-  </style>
+
+    @media (min-width: 769px) {
+      /* Show normal navigation menu */
+      nav {
+        display: flex;
+      }
+
+      /* Hide hamburger icon */
+      .hamburger {
+        display: none;
+      }
+    }
+
+
+  /* Hamburger Menu Styles */
+  .hamburger {
+    display: none;
+    cursor: pointer;
+    grid-column: 1 / span 1;
+    justify-self: end;
+    padding: 10px;
+  }
+
+  .hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #ffffff;
+    margin: 5px 0;
+    transition: 0.4s;
+  }
+
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    background: rgba(42, 32, 43, 0.951);
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    border-radius: 0 0 10px 10px;
+    padding: 1em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+  }
+
+  .nav-links.active a {
+    margin: 5px 0;
+  }
+  .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+  @media (max-width: 768px) {
+    .hamburger {
+      display: block;
+    }
+    nav {
+      display: none;
+    }
+  }
+</style>
+  <!-- JavaScript for Hamburger Menu -->
+  <script>
+    function toggleNav() {
+      var navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active'); // Add this line
+    }
+  </script>
+</style>
 </head>
 <body>
 
   <!-- Header -->
   <header style="grid-column: 1 / -1; text-align: center;">
     <div class="header-container">
-    <h1>Hey there, I'm Sumit Jahagirdar!</h1>
-    <p class="subtitle">I'm the guy who asks a ton of questions to create <b> perfectly balanced </b> AI solutions. Intrigued? Keep scrolling!</p>
-    <div class="button-container">
-        <a href="https://www.github.com/sumitrj" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/sumitrj" target="_blank">LinkedIn</a>
-    </div>
-    </div> 
-</header>
+      <h1>Hey there, I'm Sumit Jahagirdar!</h1>
+      <p class="subtitle">I'm the guy who asks a ton of questions to create <b> perfectly balanced </b> AI solutions. Intrigued? Keep scrolling!</p>
+      
+      <div class="social-buttons">
+        <a class="nav-button" href="https://www.github.com/sumitrj" target="_blank">GitHub</a>
+        <a class="nav-button" href="https://www.linkedin.com/in/sumitrj" target="_blank">LinkedIn</a>
+      </div>
 
-  <!-- Navigation -->
-  <nav style="grid-column: 1 / -1;">
-    <a href="#about">Who Am I?</a>
-    <a href="#education">Where Did I Learn?</a>
-    <a href="#skills">What Can I Do?</a>
-    <a href="#publications">Publications</a>
-    <a href="#previous_projects">Previous Projects</a>
-    <a href="#current_projects">Current Projects</a>
-    <a href="#achievements">Achievements</a>
-    <a href="#useless-creations">Just for Fun!</a>
-    <a href="#contact">Wanna Chat?</a>
-  </nav>
+      <br>
+      <!-- Navigation Links (Hidden by Default) -->
+      <div class="nav-links">
+        <a class="nav-button" href="#about">Intro</a>
+        <a class="nav-button" href="#education">Experience and Edu</a>
+    </div>
+    <br>
+    <br>
+    <div class="nav-links">
+        <a class="nav-button" href="#skills">Skills</a>
+        <a class="nav-button" href="#publications">Publications</a>
+      </div>
+    <br>
+    <br>
+    <div class="nav-links">
+        <a class="nav-button" href="#current_projects">Projects</a>
+        <a class="nav-button" href="#achievements">Achievements</a>
+      </div>
+      <br>
+      <br>
+      <div class="nav-links">
+        <a class="nav-button" href="#useless-creations">Just for Fun!</a>
+        <a class="nav-button" href="#contact">Wanna Chat?</a>
+    </div>
+</div> 
+</header>
 
   <!-- About -->
   <section id="about">
@@ -166,11 +280,13 @@
 
 <section id="skills">
     <h2>What Skills Do I Bring to the Table?</h2>
-<div class="skill-button">Machine Learning</div>
-<div class="skill-button">Data Science</div>
+<div class="skill-button">Generative AI</div>
+<div class="skill-button">Software Engineering</div>
 <div class="skill-button">Python</div>
-<div class="skill-button">AWS</div>
-<div class="skill-button">Kubernetes</div>
+<div class="skill-button">Deep Learning</div>
+<div class="skill-button">NLP and Language Modelling</div>
+<div class="skill-button">Computer Vision</div>
+<div class="skill-button">MLOps</div>
 <div class="skill-button">IoT</div>
 </section>
 
