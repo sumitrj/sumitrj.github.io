@@ -1,427 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sumit Jahagirdar - Portfolio</title>
-  <style>
-    /* General Styles */
-    body {
-      font-family: 'Comic Sans MS', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom, #1a1a1a, #2c2c2c);
-      color: #ffffff;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto;
-    }
-    @media (max-width: 768px) {
-      body {
-        grid-template-columns: 1fr;
-      }
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J J JAImsom's AI News Universe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-    @media (min-width: 769px) {
-      nav {
-        display: flex;
-        gap: 20px; /* adjust this value to your needs */
-      }
-    }
-    header, nav, section, footer {
-      padding: 1em;
-      text-align: center;
-      border-radius: 10px;
-      margin: 10px;
-      background: rgba(255, 255, 255, 0.1);
-    }
-    nav {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-    }
-    nav a {
-      color: #ffffff;
-      text-decoration: none;
-      padding: 10px;
-      border-radius: 5px;
-      transition: background 0.3s ease;
-    }
-    nav a:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-    a {
-      color: #ffffff;
-      text-decoration: none;
-    }
-    /* Skills */
-    .skill-button {
-      background: rgba(0, 0, 0, 0.5);
-      padding: 10px;
-      border-radius: 5px;
-      margin: 5px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .skill-button:hover {
-      background: rgba(255, 255, 255, 0.5);
-      color: #000000;
-    }
-    /* Subtitle */
-    .subtitle {
-      font-size: 1.5em;
-      font-style: italic;
-      color: #ffcc00; /* Gold */
-    }
-    /* Projects */
-    .project {
-      background: rgba(0, 0, 255, 0.2); /* Blue */
-      margin: 10px;
-      padding: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .nav-button {
-      background: rgba(0, 0, 255, 0.2); /* Blue */
-      margin: 10px;
-      padding: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .project:hover {
-      background: rgba(0, 0, 255, 0.4);
-    }
-    /* Publications */
-    .publication {
-      background: rgba(38, 7, 101, 0.2); /* Red */
-      margin: 10px;
-      padding: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .publication:hover {
-      background: rgba(6, 2, 16, 0.243);
-    }
-    /* Useless Creations */
-    .useless-creation {
-      background: rgba(124, 46, 202, 0.2); /* Green */
-      margin: 10px;
-      padding: 10px;
-      border-radius: 5px;
-    }
-    .useless-creation:hover {
-      background: rgba(109, 113, 239, 0.4);
-    }
-
-    .button-container a {
-      display: inline-block;
-      margin: 5px;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      background: rgba(123, 147, 154, 0.2);
-      color: #ffffff;
-      text-decoration: none;
-      transition: background 0.3s ease;
-    }
-    .button-container a:hover {
-      background: rgba(123, 147, 154, 0.2);
-    }
-    .header-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-  }
-  .button-container {
-    display: none; /* Hide on computer version */
-  }
-
-  /* Mobile Styles */
-  @media (max-width: 768px) {
-      /* Hide hamburger icon */
-      .hamburger {
-        display: block;
-      }
-      
-      /* Hide normal navigation menu */
-      nav {
-        display: none;
-      }
-    }
-
-    @media (min-width: 769px) {
-      /* Show normal navigation menu */
-      nav {
-        display: flex;
-      }
-
-      /* Hide hamburger icon */
-      .hamburger {
-        display: none;
-      }
-    }
-
-
-  /* Hamburger Menu Styles */
-  .hamburger {
-    display: none;
-    cursor: pointer;
-    grid-column: 1 / span 1;
-    justify-self: end;
-    padding: 10px;
-  }
-
-  .hamburger div {
-    width: 25px;
-    height: 3px;
-    background-color: #ffffff;
-    margin: 5px 0;
-    transition: 0.4s;
-  }
-
-  .nav-links.active {
-    display: flex;
-    flex-direction: column;
-    background: rgba(42, 32, 43, 0.951);
-    width: 100%;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    border-radius: 0 0 10px 10px;
-    padding: 1em;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    z-index: 1;
-  }
-
-  .nav-links.active a {
-    margin: 5px 0;
-  }
-  .social-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
-
-  @media (max-width: 768px) {
-    .hamburger {
-      display: block;
-    }
-    nav {
-      display: none;
-    }
-  }
-</style>
-  <!-- JavaScript for Hamburger Menu -->
-  <script>
-    function toggleNav() {
-      var navLinks = document.querySelector('.nav-links');
-      navLinks.classList.toggle('active'); // Add this line
-    }
-  </script>
-</style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #FFFFFF;
+            line-height: 1.8;
+        }
+        header {
+            padding: 20px;
+            text-align: center;
+            background: #282828;
+            box-shadow: 0px 3px 10px #000;
+        }
+        header h1 {
+            margin: 0;
+            color: #E84D70;
+            font-family: 'Press Start 2P', cursive;
+            animation: colorChange 10s infinite;
+            font-size: 1.5rem;
+            word-break: break-word;
+        }
+        header h1 span {
+            color: #E8A317;
+        }
+        @keyframes colorChange {
+            0% { color: #E84D70; }
+            25% { color: #E8A317; }
+            50% { color: #70E887; }
+            75% { color: #7087E8; }
+            100% { color: #E84D70; }
+        }
+        .container {
+            padding: 20px;
+            animation: fadeIn 2s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .news-segment {
+            background: #282828;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 3px 10px #000;
+            position: relative;
+        }
+        .news-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #E8A317;
+            font-family: 'Press Start 2P', cursive;
+            animation: titleColorChange 10s infinite;
+            word-break: break-word;
+        }
+        @keyframes titleColorChange {
+            0% { color: #E8A317; }
+            25% { color: #E84D70; }
+            50% { color: #7087E8; }
+            75% { color: #70E887; }
+            100% { color: #E8A317; }
+        }
+        .news-content p {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        .highlight {
+            color: #E84D70;
+            font-weight: bold;
+        }
+        @media only screen and (min-width: 600px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            .news-title {
+                font-size: 1.5rem;
+            }
+            .news-content p {
+                font-size: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-
-  <!-- Header -->
-  <header style="grid-column: 1 / -1; text-align: center;">
-    <div class="header-container">
-      <h1>Hey there, I'm Sumit Jahagirdar!</h1>
-      <p class="subtitle">I'm the guy who asks a ton of questions to create <b> perfectly balanced </b> AI solutions. Intrigued? Keep scrolling!</p>
-      
-      <div class="social-buttons">
-        <a class="nav-button" href="https://www.github.com/sumitrj" target="_blank">GitHub</a>
-        <a class="nav-button" href="https://www.linkedin.com/in/sumitrj" target="_blank">LinkedIn</a>
-      </div>
-
-      <br>
-      <!-- Navigation Links (Hidden by Default) -->
-      <div class="nav-links">
-        <a class="nav-button" href="#about">Intro</a>
-        <a class="nav-button" href="#education">Experience and Edu</a>
-    </div>
-    <br>
-    <br>
-    <div class="nav-links">
-        <a class="nav-button" href="#skills">Skills</a>
-        <a class="nav-button" href="#publications">Publications</a>
-      </div>
-    <br>
-    <br>
-    <div class="nav-links">
-        <a class="nav-button" href="#current_projects">Projects</a>
-        <a class="nav-button" href="#achievements">Achievements</a>
-      </div>
-      <br>
-      <br>
-      <div class="nav-links">
-        <a class="nav-button" href="#useless-creations">Just for Fun!</a>
-        <a class="nav-button" href="#contact">Wanna Chat?</a>
-    </div>
-</div> 
-</header>
-
-  <!-- About -->
-  <section id="about">
-    <h2>So, Who Am I?</h2>
-    <h3>Short answer: I am a Data Scientist who builds AI models and related products</h3>
-    <h3>Long answer</h3>
-    <div class="skill-button">I Balance Model training, Large model usage, shallow model usage, Infrastructure load, and Software complexity</li>
-    </div>
-    <div class="skill-button">Even when data is to be processed and analyzed in simplest or the most sophisticated ways</div>
-    <div class="skill-button">Doesn't matter if it is in form of weird images to massively unstructured text</div>
-    
-</section>
-
-<section id="skills">
-    <h2>What Skills Do I Bring to the Table?</h2>
-<div class="skill-button">Generative AI</div>
-<div class="skill-button">Software Engineering</div>
-<div class="skill-button">Python</div>
-<div class="skill-button">Deep Learning</div>
-<div class="skill-button">NLP and Language Modelling</div>
-<div class="skill-button">Computer Vision</div>
-<div class="skill-button">MLOps</div>
-<div class="skill-button">IoT</div>
-</section>
-
-     <!-- Education -->
-     <section id="education">
-        <h2>I picked my skills while at...</h2>
-        <div class="project">
-            <h3>Aidetic for 1.5 years as Data Scientist</h3>
-          </div>
-        <div class="project">
-            <h3>GE Healthcare for 9 months as Software Engineer</h3>
-          </div>
-        <div class="project">
-            <h3>NVIDIA for 9 months as ML Research Intern</h3>
-          </div>
-        <div class="project">
-            <h3>VIT Vellore to study Btech ECE with specialization in IoT</h3>
-          </div>
-          
-        </section>
-        
-        
-        <!-- Experience -->
-        <section id="current_projects">
-            <h2>Recently I have been into ..</h2>
-            <div class="project">
-                <h3>AI based video correction</h3>
+    <header>
+        <h1>J J J<span>AI</span>mson's AI News Universe</h1>
+    </header>
+    <div class="container">
+        <div class="news-segment">
+            <h2 class="news-title">Introduction:</h2>
+            <div class="news-content">
+                <p>In a world witnessing the <span class="highlight">transformative power</span> of artificial intelligence, various entities are making <span class="highlight">significant moves</span>. <span class="highlight">Amazon's hefty investment</span> in <span class="highlight">Anthropic</span>, Europe’s <span class="highlight">aspiration</span> for a <span class="highlight">competitive edge</span> through generative AI, and the <span class="highlight">surprising venture</span> of Getty into the <span class="highlight">AI image business</span> collectively signal a <span class="highlight">dynamic and evolving landscape</span>.</p>
             </div>
-            <div class="project">
-                <h3>LLM based legal context annotator</h3>
+        </div>
+        <div class="news-segment">
+            <h2 class="news-title">Amazon's Visionary Move:</h2>
+            <div class="news-content">
+                <p>Amazon has <span class="highlight">strategically invested $4 billion</span> in Anthropic, a <span class="highlight">renowned AI research company</span>. This collaboration aims to <span class="highlight">drive advancements</span> in AI technologies, potentially <span class="highlight">revolutionizing sectors like cloud computing</span>. Amazon’s move is a testament to its <span class="highlight">commitment to being a leader</span> in offering AI-driven solutions and services, highlighting the <span class="highlight">potential impact</span> of this technology across industries.</p>
             </div>
-            <div class="project">
-                <h3>AI steel quality assessor</h3>
+        </div>
+        <div class="news-segment">
+            <h2 class="news-title">Europe’s AI Aspirations:</h2>
+            <div class="news-content">
+                <p>Europe is not far behind, with a <span class="highlight">focused approach</span> on generative AI to <span class="highlight">compete against the U.S</span>. The region is <span class="highlight">leveraging the potential of AI</span> for innovation and development, aiming to <span class="highlight">establish itself as a significant player</span> in the global AI arena. Europe’s ambitions underscore the <span class="highlight">strategic importance</span> of AI in shaping the future of technology and competition on the global stage.</p>
             </div>
-            <div class="project">
-                <h3>Tool to extract tables from images</h3>
+        </div>
+        <div class="news-segment">
+            <h2 class="news-title">Getty’s Unexpected Entry:</h2>
+            <div class="news-content">
+                <p>In a <span class="highlight">surprising turn of events</span>, Getty, known for its <span class="highlight">vast image database</span>, has entered the AI image business. Despite its <span class="highlight">previous stance against AI art</span>, Getty has launched a <span class="highlight">unique generative AI tool</span> trained on its own database. This tool not only produces content with a royalty-free license but also marks Getty’s <span class="highlight">strategic entry</span> into the <span class="highlight">competitive AI market</span>. <span class="highlight">Competitors like Shutterstock and Adobe’s Stock</span> have also embraced AI, showcasing the <span class="highlight">growing influence</span> of AI in the image business.</p>
             </div>
-            <div class="project">
-                <h3>Highly detailed post-processing of financial documents</h3>
+        </div>
+        <div class="news-segment">
+            <h2 class="news-title">Connecting the Dots:</h2>
+            <div class="news-content">
+                <p>These <span class="highlight">diverse developments</span> represent a <span class="highlight">multifaceted narrative</span> in the AI landscape. Amazon’s investment, Europe’s competitive strategy, the <span class="highlight">importance of good judgment</span>, and Getty’s venture into AI are <span class="highlight">interconnected pieces of a larger puzzle</span>. They depict a world <span class="highlight">embracing AI’s transformative potential</span>, where technology, strategy, and ethics converge to redefine the boundaries of what is possible.</p>
             </div>
-            <div class="project">
-                <h3>On-prem SDK and cron via queue for Edison AI Workbench</h3>
-            </div>
-
-        </section>
-        
-        <!-- Experience -->
-        <section id="previous_projects">
-          <h2> A couple of years ago, I was upto... </h2>
-          <div class="project">
-            <h3>Weighted Gaussian variants of Class Anchor Clustering Loss function for detection of COVID-19 from Chest X-ray images using Transfer Learning (Also presented in GTC 2020)</h3>
-            <a href="https://github.com/sumitrj/ChestXray-TransferLearning" target="_blank">See Code</a>
-          </div>
-          <div class="project">
-            <h3>iHearIT: World’s first intelligent hearing aid</h3>
-            <a href="https://github.com/sumitrj/iHearIT" target="_blank">See Code</a>
-          </div>
-          <div class="project">
-            <h3>rClassify: Boolean classifier of Diabetic Reptipathic condition for Fundus images</h3>
-            <a href="https://github.com/sumitrj/rClassify" target="_blank">See Code</a>
-          </div>
-          <div class="project">
-            <h3>Connected-Q: Multi-agent reinforcement learning algorithm</h3>
-            <a href="https://github.com/sumitrj/ConnectedQ-Multi-agent-Reinforcement-Learning-Algorithm" target="_blank">See Code</a>
-          </div>
-      
-        </section>
-        <!-- Skills -->
-
-  <!-- Publications -->
-  <section id="publications">
-    <h2>I Wrote Papers in Undergrad, Read Them?</h2>
-    <div class="publication">
-      <p>Design and Algorithms of the Device to predict Blood Glucose Level based on Saliva Sample using Machine Learning</p>
-      <a href="https://ieeexplore.ieee.org/document/8987866" target="_blank">Read Paper</a> | <a href="https://github.com/sumitrj/DiaBeaTiT" target="_blank">See Code</a>
+        </div>
     </div>
-    <div class="publication">
-      <p>WiFi-based Indoor Positioning System using Machine Learning and Multi-Node Triangulation Algorithms</p>
-      <a href="https://ieeexplore.ieee.org/document/9225350" target="_blank">Read Paper</a> | <a href="https://github.com/sumitrj/WiFi.Locate" target="_blank">See Code</a>
-    </div>
-    <div class="publication">
-      <p>Failure Prediction systems for IoT connected machines using Machine Learning</p>
-      <a href="https://ieeexplore.ieee.org/document/8987843" target="_blank">Read Paper</a> | <a href="https://github.com/sumitrj/AutoConnect" target="_blank">See Code</a>
-    </div>
-    <div class="publication">
-      <p>Performance Analysis of the Classifiers for Optical Character Recognition</p>
-      <a href="https://ieeexplore.ieee.org/document/9065710" target="_blank">Read Paper</a> | <a href="https://github.com/sumitrj/Devanagari-OCR" target="_blank">See Code</a>
-    </div>
-  </section>
-
-  <!-- Achievements -->
-  <section id="achievements">
-    <h2>You Might Have Seen Me When I...</h2>
-    <div class="skill-button">
-        <h3>
-            Spoke at NVIDIA GTC 2020
-        </h3>
-    </div>
-    <div class="skill-button">
-        <h3>
-            Was recognized among Top 30 Microsoft Student Partners of APAC
-        </h3>
-    </div>
-    <div class="skill-button">
-    <h3>Won Aidetic launchpad hackathon</h3></div>
-    <div class="skill-button"><h3>Won MLH Mental Health Hackathon</h3></div>
-    <div class="skill-button"><h3>Won Startup VIT</h3></div>
-    <div class="skill-button"><h3>Won IET's Zonal PATW</h3></div>
-    <div class="skill-button"><h3>Came third in GE Healthcare precision health challenge</h3></div>
-  </section>
-
-  <!-- Other Creations -->
-  <section id="useless-creations">
-    <h2>Cool and Not Completely Useless Creations:</h2>
-    <div class="useless-creation">
-      <h3>AI News Report Video Generator</h3>
-    </div>
-    <div class="useless-creation">
-      <h3>AI Question Paper Creator</h3>
-    </div>
-    <div class="useless-creation">
-      <h3>Whistle to Tune</h3>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" style="grid-column: 1 / -1;">
-    <h2>Like What You See? Let's Chat!</h2>
-    <p>Email: sumitrj99@gmail.com</p>
-  </section>
-
-  <!-- Footer -->
-  <footer style="grid-column: 1 / -1;">
-    <p>© 2023 Sumit Jahagirdar. All rights reserved. Thanks for stopping by!</p>
-  </footer>
-
 </body>
 </html>
