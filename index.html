@@ -1,436 +1,911 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sumit Jahagirdar - Portfolio</title>
-  <style>
-    /* General Styles */
-    body {
-      font-family: 'Comic Sans MS', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom, #1a1a1a, #2c2c2c);
-      color: #ffffff;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto;
-    }
-    @media (max-width: 768px) {
-      body {
-        grid-template-columns: 1fr;
-      }
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumit Jahagirdar | Applied AI Scientist & Engineer</title>
+    
+    <!-- Typography & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
 
-    @media (min-width: 769px) {
-      nav {
-        display: flex;
-        gap: 20px; /* adjust this value to your needs */
-      }
-    }
-    header, nav, section, footer {
-      padding: 1em;
-      text-align: center;
-      border-radius: 10px;
-      margin: 10px;
-      background: rgba(255, 255, 255, 0.1);
-    }
-    nav {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-    }
-    nav a {
-      color: #ffffff;
-      text-decoration: none;
-      padding: 10px;
-      border-radius: 5px;
-      transition: background 0.3s ease;
-    }
-    nav a:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-    a {
-      color: #ffffff;
-      text-decoration: none;
-    }
-    /* Skills */
-    .skill-button {
-      background: rgba(0, 0, 0, 0.5);
-      padding: 10px;
-      border-radius: 5px;
-      margin: 5px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .skill-button:hover {
-      background: rgba(255, 255, 255, 0.5);
-      color: #000000;
-    }
-    /* Subtitle */
-    .subtitle {
-      font-size: 1.5em;
-      font-style: italic;
-      color: #ffcc00; /* Gold */
-    }
-    /* Projects */
-    .project {
-      background: rgba(0, 0, 255, 0.2); /* Blue */
-      margin: 10px;
-      padding: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .nav-button {
-      background: rgba(0, 0, 255, 0.2); /* Blue */
-      margin: 10px;
-      padding: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .project:hover {
-      background: rgba(0, 0, 255, 0.4);
-    }
-    /* Publications */
-    .publication {
-      background: rgba(38, 7, 101, 0.2); /* Red */
-      margin: 10px;
-      padding: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .publication:hover {
-      background: rgba(6, 2, 16, 0.243);
-    }
-    /* Useless Creations */
-    .useless-creation {
-      background: rgba(124, 46, 202, 0.2); /* Green */
-      margin: 10px;
-      padding: 10px;
-      border-radius: 5px;
-    }
-    .useless-creation:hover {
-      background: rgba(109, 113, 239, 0.4);
-    }
+    <style>
+        :root {
+            /* Professional Tech Palette */
+            --primary: #0b57d0;
+            --on-primary: #ffffff;
+            --primary-container: #d3e3fd;
+            --on-primary-container: #041e49;
+            
+            --background: #f8f9fa;
+            --surface: #ffffff;
+            --surface-variant: #f0f4f9;
+            
+            --outline: #747775;
+            --outline-variant: #e0e3e7;
+            
+            --text-main: #1b1b1f;
+            --text-body: #444746;
+            --text-subtle: #76777a;
 
-    .button-container a {
-      display: inline-block;
-      margin: 5px;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      background: rgba(123, 147, 154, 0.2);
-      color: #ffffff;
-      text-decoration: none;
-      transition: background 0.3s ease;
-    }
-    .button-container a:hover {
-      background: rgba(123, 147, 154, 0.2);
-    }
-    .header-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-  }
-  .button-container {
-    display: none; /* Hide on computer version */
-  }
+            /* Dimensions */
+            --radius-xl: 20px;
+            --radius-l: 12px;
+            --radius-m: 8px;
+            
+            --font-ui: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
 
-  /* Mobile Styles */
-  @media (max-width: 768px) {
-      /* Hide hamburger icon */
-      .hamburger {
-        display: block;
-      }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: var(--font-ui);
+            background-color: var(--background);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
 
-      /* Hide normal navigation menu */
-      nav {
-        display: none;
-      }
-    }
+        /* --- GRID LAYOUT --- */
+        .wrapper {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            gap: 32px;
+            padding: 32px;
+            min-height: 100vh;
+            align-items: start;
+        }
 
-    @media (min-width: 769px) {
-      /* Show normal navigation menu */
-      nav {
-        display: flex;
-      }
+        /* --- SIDEBAR --- */
+        .sidebar {
+            position: sticky;
+            top: 32px;
+            max-height: calc(100vh - 64px);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-right: 4px;
+            scrollbar-width: thin;
+        }
 
-      /* Hide hamburger icon */
-      .hamburger {
-        display: none;
-      }
-    }
+        .sidebar-card {
+            background: var(--surface);
+            border-radius: var(--radius-xl);
+            padding: 24px;
+            border: 1px solid var(--outline-variant);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
 
+        /* Profile */
+        .profile-header h1 { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 6px;}
+        .profile-header h2 { font-size: 1.05rem; color: var(--primary); font-weight: 600; margin-bottom: 16px; }
+        .bio-text { font-size: 0.9rem; color: var(--text-body); margin-bottom: 20px; }
 
-  /* Hamburger Menu Styles */
-  .hamburger {
-    display: none;
-    cursor: pointer;
-    grid-column: 1 / span 1;
-    justify-self: end;
-    padding: 10px;
-  }
+        .meta-list { display: flex; flex-direction: column; gap: 10px; }
+        .meta-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--text-body); text-decoration: none; transition: 0.2s; }
+        .meta-item:hover { color: var(--primary); }
+        
+        .meta-highlight { color: var(--primary); font-weight: 600; }
 
-  .hamburger div {
-    width: 25px;
-    height: 3px;
-    background-color: #ffffff;
-    margin: 5px 0;
-    transition: 0.4s;
-  }
+        /* Skills */
+        .skill-group { margin-bottom: 20px; }
+        .skill-group:last-child { margin-bottom: 0; }
+        .skill-header { 
+            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; 
+            font-weight: 700; color: var(--primary); margin-bottom: 10px; display: block; 
+            border-bottom: 1px solid var(--outline-variant); padding-bottom: 4px;
+        }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .tag {
+            font-family: var(--font-mono); font-size: 0.75rem;
+            background: var(--surface-variant); padding: 4px 8px;
+            border-radius: 6px; color: var(--text-body); font-weight: 500;
+        }
 
-  .nav-links.active {
-    display: flex;
-    flex-direction: column;
-    background: rgba(42, 32, 43, 0.951);
-    width: 100%;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    border-radius: 0 0 10px 10px;
-    padding: 1em;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    z-index: 1;
-  }
+        /* Awards */
+        .award-list { display: flex; flex-direction: column; gap: 14px; }
+        .award-item { display: flex; gap: 12px; align-items: flex-start; text-decoration: none; color: inherit; transition: 0.2s; }
+        .award-item:hover .award-content strong { color: var(--primary); }
+        
+        .award-icon-box { 
+            background: #fff8e1; color: #f57f17; 
+            min-width: 28px; height: 28px; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; 
+        }
+        .award-content strong { display: block; font-size: 0.85rem; line-height: 1.2; }
+        .award-content span { font-size: 0.75rem; color: var(--text-subtle); }
 
-  .nav-links.active a {
-    margin: 5px 0;
-  }
-  .social-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
+        /* --- MAIN FEED --- */
+        .main-feed { display: flex; flex-direction: column; gap: 32px; }
 
-  @media (max-width: 768px) {
-    .hamburger {
-      display: block;
-    }
-    nav {
-      display: none;
-    }
-  }
-</style>
-  <!-- JavaScript for Hamburger Menu -->
-  <script>
-    function toggleNav() {
-      var navLinks = document.querySelector('.nav-links');
-      navLinks.classList.toggle('active'); // Add this line
-    }
-  </script>
-</style>
+        /* Objective Card */
+        .objective-card {
+            background: var(--surface);
+            border: 1px solid var(--outline-variant);
+            border-radius: var(--radius-l);
+            padding: 24px;
+        }
+        .obj-label { 
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; 
+            font-weight: 700; color: var(--text-subtle); margin-bottom: 8px; 
+        }
+        .obj-text { font-size: 1rem; color: var(--text-body); }
 
+        /* Section Headers */
+        .section-title {
+            font-size: 1.4rem; font-weight: 700; color: var(--text-main);
+            display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+            padding-bottom: 12px; border-bottom: 1px solid var(--outline-variant);
+            margin-top: 12px;
+        }
+        .section-icon { color: var(--primary); }
+
+        /* Experience Meta */
+        .exp-header {
+            display: flex; justify-content: space-between; align-items: flex-end;
+            margin-bottom: 16px; flex-wrap: wrap; gap: 4px;
+        }
+        .exp-role { font-size: 1.35rem; font-weight: 700; width: 100%; }
+        .exp-company { font-size: 1.1rem; color: var(--primary); font-weight: 500; }
+        .exp-date { font-family: var(--font-mono); color: var(--text-subtle); font-size: 0.9rem; }
+
+        .role-overview {
+            margin-bottom: 24px; padding: 16px;
+            background: #ffffff; border-left: 3px solid var(--primary);
+            color: var(--text-body); font-size: 0.95rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        /* Project Cards */
+        .project-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+
+        .project-card {
+            background: var(--surface);
+            border: 1px solid var(--outline-variant);
+            border-radius: var(--radius-l);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .p-head {
+            padding: 20px 24px 16px;
+            border-bottom: 1px solid var(--surface-variant);
+            display: flex; justify-content: space-between; align-items: flex-start;
+            flex-wrap: wrap; gap: 8px;
+        }
+        .p-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+        .p-client { font-size: 0.85rem; color: var(--text-subtle); display: flex; align-items: center; gap: 6px; }
+        
+        .badge { font-size: 0.7rem; font-weight: 600; padding: 4px 10px; border-radius: 12px; white-space: nowrap; }
+        .badge-genai { background: #e8f0fe; color: #1557b0; }
+        .badge-doc { background: #fff3e0; color: #e65100; }
+        .badge-sec { background: #fce8e6; color: #c5221f; }
+        .badge-cv { background: #f3e5f5; color: #7b1fa2; }
+        .badge-nlp { background: #e0f2f1; color: #00695c; }
+        .badge-open { background: #e3f2fd; color: #0277bd; }
+
+        .p-premise {
+            background: var(--surface-variant); padding: 12px 24px;
+            font-size: 0.9rem; color: var(--text-body); font-style: italic;
+        }
+
+        .p-body { padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+        
+        .p-col-label {
+            font-size: 0.7rem; text-transform: uppercase; font-weight: 700; 
+            color: var(--outline); margin-bottom: 12px; display: flex; align-items: center; gap: 6px;
+        }
+        
+        .p-list { list-style: none; }
+        .p-list li {
+            position: relative; padding-left: 14px; margin-bottom: 8px;
+            font-size: 0.9rem; color: var(--text-main);
+        }
+        .p-list li::before { content: "•"; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
+
+        .p-tech {
+            padding: 16px 24px; background: #fff;
+            border-top: 1px solid var(--surface-variant);
+            display: flex; flex-wrap: wrap; gap: 6px;
+        }
+
+        /* Education & Pubs */
+        .edu-item {
+            background: var(--surface); padding: 24px; border-radius: var(--radius-l);
+            border: 1px solid var(--outline-variant); margin-bottom: 16px;
+        }
+        
+        /* Updated Publication Links */
+        .pub-item { padding: 16px 0; border-bottom: 1px solid var(--surface-variant); }
+        .pub-item:last-child { border-bottom: none; }
+        .pub-title { font-size: 0.95rem; font-weight: 500; color: var(--text-main); margin-bottom: 6px; line-height: 1.4; }
+        .pub-meta { display: flex; gap: 16px; font-size: 0.85rem; }
+        .pub-action { 
+            color: var(--primary); text-decoration: none; font-weight: 500; 
+            display: flex; align-items: center; gap: 4px; transition: 0.2s; 
+        }
+        .pub-action:hover { text-decoration: underline; color: #0042a9; }
+
+        /* --- MOBILE --- */
+        @media (max-width: 900px) {
+            .wrapper { grid-template-columns: 1fr; padding: 16px; gap: 24px; }
+            .sidebar { position: static; max-height: none; overflow: visible; padding-right: 0; }
+            .p-body { grid-template-columns: 1fr; gap: 24px; }
+            .exp-header { flex-direction: column; align-items: flex-start; }
+            .exp-company { margin-bottom: 4px; }
+            .section-title { font-size: 1.25rem; }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header style="grid-column: 1 / -1; text-align: center;">
-    <div class="header-container">
-      <h1>Hey there, I'm Sumit Jahagirdar!</h1>
-      <p class="subtitle">I'm the guy who asks a ton of questions to create <b> perfectly balanced </b> AI solutions. Intrigued? Keep scrolling!</p>
+<div class="wrapper">
+    
+    <!-- === LEFT PANEL (Identity & Skills) === -->
+    <aside class="sidebar">
+        <div class="sidebar-card">
+            <div class="profile-header">
+                <h1>Sumit Jahagirdar</h1>
+                <h2>Applied AI Scientist & Engineer</h2>
+            </div>
+            <p class="bio-text">
+                4+ years architecting cognitive systems. Specializing in bridging the gap between unstructured chaos and structured enterprise value through Agentic AI and Multimodal Systems.
+            </p>
+            <div class="meta-list">
+                <!-- DOWNLOAD CV LINK -->
+                <a href="./cv.pdf" class="meta-item meta-highlight" download>
+                    <span class="material-symbols-rounded">download</span> Download CV
+                </a>
+                <a href="mailto:email@example.com" class="meta-item">
+                    <span class="material-symbols-rounded">mail</span> Contact Me
+                </a>
+                <a href="http://linkedin.com/in/sumitrj" target="_blank" class="meta-item">
+                    <span class="material-symbols-rounded">link</span> LinkedIn Profile
+                </a>
+                <a href="https://github.com/sumitrj" target="_blank" class="meta-item">
+                    <span class="material-symbols-rounded">code</span> GitHub Profile
+                </a>
+                <div class="meta-item">
+                    <span class="material-symbols-rounded">location_on</span> Bangalore, India
+                </div>
+            </div>
+        </div>
 
-      <div class="social-buttons">
-        <a class="nav-button" href="https://www.github.com/sumitrj" target="_blank">GitHub</a>
-        <a class="nav-button" href="https://www.linkedin.com/in/sumitrj" target="_blank">LinkedIn</a>
-      </div>
+        <div class="sidebar-card">
+            <div class="skill-group">
+                <span class="skill-header">Generative AI & Deep Learning</span>
+                <div class="skill-tags">
+                    <span class="tag">LLM Agents & Reasoning</span>
+                    <span class="tag">RAG & Semantic Search</span>
+                    <span class="tag">Transformers</span>
+                    <span class="tag">vLLM & Inference Opt</span>
+                    <span class="tag">Diffusion Models</span>
+                    <span class="tag">GANs</span>
+                    <span class="tag">Fine-tuning (PEFT/LoRA)</span>
+                </div>
+            </div>
 
-      <br>
-      <!-- Navigation Links (Hidden by Default) -->
-      <div class="nav-links">
-        <a class="nav-button" href="#about">Intro</a>
-        <a class="nav-button" href="#education">Experience and Edu</a>
-    </div>
-    <br>
-    <br>
-    <div class="nav-links">
-        <a class="nav-button" href="#skills">Skills</a>
-        <a class="nav-button" href="#publications">Publications</a>
-      </div>
-    <br>
-    <br>
-    <div class="nav-links">
-        <a class="nav-button" href="#current_projects">Projects</a>
-        <a class="nav-button" href="#achievements">Achievements</a>
-      </div>
-      <br>
-      <br>
-      <div class="nav-links">
-        <a class="nav-button" href="#useless-creations">Just for Fun!</a>
-        <a class="nav-button" href="#contact">Wanna Chat?</a>
-    </div>
-</div> 
-</header>
+            <div class="skill-group">
+                <span class="skill-header">Applied AI & Vision</span>
+                <div class="skill-tags">
+                    <span class="tag">Computer Vision</span>
+                    <span class="tag">NLP (NER, Parsing)</span>
+                    <span class="tag">Recommendation Systems</span>
+                    <span class="tag">Clustering</span>
+                    <span class="tag">Supervised Learning</span>
+                </div>
+            </div>
 
-  <!-- About -->
-  <section id="about">
-    <h2>So, Who Am I?</h2>
-    <h3>Short answer: I am a Data Scientist who builds AI models and related products</h3>
-    <h3>Long answer</h3>
-    <div class="skill-button">I Balance Model training, Large model usage, shallow model usage, Infrastructure load, and Software complexity</li>
-    </div>
-    <div class="skill-button">Even when data is to be processed and analyzed in simplest or the most sophisticated ways</div>
-    <div class="skill-button">Doesn't matter if it is in form of weird images to massively unstructured text</div>
+            <div class="skill-group">
+                <span class="skill-header">Engineering & Stack</span>
+                <div class="skill-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">PyTorch</span>
+                    <span class="tag">FastAPI</span>
+                    <span class="tag">Databricks/Spark</span>
+                    <span class="tag">SageMaker</span>
+                    <span class="tag">OpenCV</span>
+                    <span class="tag">Pandas/Numpy</span>
+                    <span class="tag">Vector DBs</span>
+                </div>
+            </div>
+        </div>
 
-</section>
+        <div class="sidebar-card">
+            <span class="skill-header">Honors & Awards</span>
+            <div class="award-list">
+                <a href="https://event.on24.com/wcc/r/2661799/896A1448EE30E447B088ED88AA458385" target="_blank" class="award-item">
+                    <div class="award-icon-box"><span class="material-symbols-rounded">mic</span></div>
+                    <div class="award-content">
+                        <strong>Speaker</strong>
+                        <span>NVIDIA GTC 2020</span>
+                    </div>
+                </a>
+                <div class="award-item">
+                    <div class="award-icon-box"><span class="material-symbols-rounded">star</span></div>
+                    <div class="award-content">
+                        <strong>Top 30</strong>
+                        <span>MS Student Partners APAC</span>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon-box"><span class="material-symbols-rounded">emoji_events</span></div>
+                    <div class="award-content">
+                        <strong>Winner</strong>
+                        <span>Aidetic Launchpad Hackathon</span>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon-box"><span class="material-symbols-rounded">emoji_events</span></div>
+                    <div class="award-content">
+                        <strong>Winner</strong>
+                        <span>GE Precision Health</span>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon-box"><span class="material-symbols-rounded">emoji_events</span></div>
+                    <div class="award-content">
+                        <strong>Winner</strong>
+                        <span>IET PATW 2020</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
 
-<section id="skills">
-    <h2>What Skills Do I Bring to the Table?</h2>
-<div class="skill-button">Generative AI</div>
-<div class="skill-button">Software Engineering</div>
-<div class="skill-button">Python</div>
-<div class="skill-button">Deep Learning</div>
-<div class="skill-button">NLP and Language Modelling</div>
-<div class="skill-button">Computer Vision</div>
-<div class="skill-button">MLOps</div>
-<div class="skill-button">IoT</div>
-</section>
+    <!-- === RIGHT CONTENT === -->
+    <main class="main-feed">
 
-     <!-- Education -->
-     <section id="education">
-        <h2>I picked my skills while at...</h2>
-        <div class="project">
-            <h3>Aidetic for 1.5 years as Data Scientist</h3>
-          </div>
-        <div class="project">
-            <h3>GE Healthcare for 9 months as Software Engineer</h3>
-          </div>
-        <div class="project">
-            <h3>NVIDIA for 9 months as ML Research Intern</h3>
-          </div>
-        <div class="project">
-            <h3>VIT Vellore to study Btech ECE with specialization in IoT</h3>
-          </div>
-
+        <!-- OBJECTIVE -->
+        <section class="objective-card">
+            <div class="obj-label">Objective</div>
+            <div class="obj-text">
+                Lead Data Scientist seeking challenging Individual Contributor (IC) roles in Applied Research or Core AI Engineering. 
+                <br><br>
+                I specialize in architecting production-grade Reasoning Engines, Multimodal Pipelines, and Complex Agentic Systems. I am focused on solving ambiguity through robust engineering rather than people management.
+            </div>
         </section>
 
-
-        <!-- Experience -->
-        <section id="current_projects">
-            <h2>Recently I have been into ..</h2>
-            <div class="project">
-                <h3>AI based video correction</h3>
-            </div>
-            <div class="project">
-                <h3>LLM based legal context annotator</h3>
-            </div>
-
-            <div class="project">
-              <h3>AI steel quality assessor</h3>
-            </div>
-
-            <div class="project">
-              <h3>Tool to extract tables from images</h3>
+        <!-- AIDETIC -->
+        <section>
+            <div class="section-title">
+                <span class="material-symbols-rounded section-icon">work</span> Professional Experience
             </div>
             
-            <div class="project">
-              <h3>Highly detailed post-processing of financial documents</h3>
+            <div class="exp-header">
+                <div class="exp-role">Lead Data Scientist</div>
+                <div class="exp-company">Aidetic</div>
+                <div class="exp-date">Jun 2022 – Present</div>
             </div>
 
-          <div class="project">
-              <h3>On-prem SDK and cron via queue for Edison AI Workbench</h3>
+            <div class="role-overview">
+                <strong>Overview:</strong> Technical architect for the AI Center of Excellence. Responsible for designing and implementing high-complexity AI systems across Finance, Legal, and Media domains. Leading R&D on Agentic patterns, MLOps standardization, and Generative AI adoption.
             </div>
-          </div>
 
+            <div class="project-grid">
+
+                <!-- 1. JAPANESE PLLM -->
+                <article class="project-card">
+                    <div class="p-head">
+                        <div>
+                            <div class="p-title">Japanese PLLM - Multilingual Analytics Chatbot</div>
+                            <div class="p-client">Oak Lawn Marketing</div>
+                        </div>
+                        <span class="badge badge-genai">GenAI Agents</span>
+                    </div>
+                    <div class="p-premise">
+                        <strong>Use Case:</strong> Enable non-technical business users to query mixed Japanese/English/Romaji data on Databricks without needing SQL knowledge or data team intervention.
+                    </div>
+                    <div class="p-body">
+                        <div>
+                            <div class="p-col-label">What the System Does</div>
+                            <ul class="p-list">
+                                <li>Orchestrates data tools to answer multilingual business questions.</li>
+                                <li>Converts natural language intent into executable analytic steps (Fetch-Filter-Aggregate).</li>
+                                <li>Handles Japanese-English schema alignment automatically.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="p-col-label">My Contributions</div>
+                            <ul class="p-list">
+                                <li>Designed custom agent & tool registry for execution control.</li>
+                                <li>Built few-shot semantic caching for schema alignment.</li>
+                                <li>Implemented deterministic execution graphs for debugging.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-tech">
+                        <span class="tag">LLM Agents</span> <span class="tag">Databricks</span> <span class="tag">FastAPI</span> <span class="tag">Semantic Caching</span>
+                    </div>
+                </article>
+
+                <!-- 2. AI CALL ANALYZER -->
+                <article class="project-card">
+                    <div class="p-head">
+                        <div>
+                            <div class="p-title">AI Call Analyzer - Conversation Intelligence</div>
+                            <div class="p-client">Internal R&D</div>
+                        </div>
+                        <span class="badge badge-nlp">NLP & Analytics</span>
+                    </div>
+                    <div class="p-premise">
+                        <strong>Use Case:</strong> High-volume sales and support teams needed automated, unbiased grading of call recordings to align agents with core business objectives, moving beyond manual random sampling.
+                    </div>
+                    <div class="p-body">
+                        <div>
+                            <div class="p-col-label">What the System Does</div>
+                            <ul class="p-list">
+                                <li>Ingests audio recordings, generates transcriptions, and applies configurable LLM grading rubrics.</li>
+                                <li>Evaluates agent performance on specific KPIs (objection handling, compliance, script adherence).</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="p-col-label">My Contributions</div>
+                            <ul class="p-list">
+                                <li>Designed the end-to-end pipeline: ASR (Transcription) -> Context Retrieval -> LLM Grading.</li>
+                                <li>Solved latency and cost bottlenecks by implementing batching strategies using vLLM.</li>
+                                <li>Built logic to calculate prompt redundancy, optimizing token usage across high-volume streams.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-tech">
+                        <span class="tag">vLLM</span> <span class="tag">LLMs</span> <span class="tag">ASR/Whisper</span> <span class="tag">Batch Processing</span> <span class="tag">Python</span>
+                    </div>
+                </article>
+
+                <!-- 3. CREDIT PARSER -->
+                <article class="project-card">
+                    <div class="p-head">
+                        <div>
+                            <div class="p-title">Credit Agreement Parser</div>
+                            <div class="p-client">73Strings</div>
+                        </div>
+                        <span class="badge badge-doc">Legal Tech</span>
+                    </div>
+                    <div class="p-premise">
+                        <strong>Use Case:</strong> Automate the manual, error-prone extraction of critical financial terms from 200+ page credit agreements into structured SEC-Master-ready tables.
+                    </div>
+                    <div class="p-body">
+                        <div>
+                            <div class="p-col-label">What the System Does</div>
+                            <ul class="p-list">
+                                <li>Converts unstructured legal docs into structured financial tables.</li>
+                                <li>Preserves long-range clause dependencies and definitions.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="p-col-label">My Contributions</div>
+                            <ul class="p-list">
+                                <li>Built context-aware segmentation for covenants & definitions.</li>
+                                <li>Designed cross-reference tracing across document sections.</li>
+                                <li>Implemented clause normalization pipelines for schema compliance.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-tech">
+                        <span class="tag">NLP</span> <span class="tag">LLMs</span> <span class="tag">Document Graph</span> <span class="tag">Python</span>
+                    </div>
+                </article>
+
+                <!-- 4. FINANCIAL PARSING SUITE -->
+                <article class="project-card">
+                    <div class="p-head">
+                        <div>
+                            <div class="p-title">Financial & Document Parsing Suite</div>
+                            <div class="p-client">73Strings</div>
+                        </div>
+                        <span class="badge badge-doc">Multimodal AI</span>
+                    </div>
+                    <div class="p-premise">
+                        <strong>Use Case:</strong> Unify financial data ingestion from widely inconsistent formats (PDF, Excel, Scanned Images) to enable automated downstream analytics.
+                    </div>
+                    <div class="p-body">
+                        <div>
+                            <div class="p-col-label">What the System Does</div>
+                            <ul class="p-list">
+                                <li>Extracts tables, charts, and entities into analytics-ready DBs.</li>
+                                <li>Reconstructs chart elements (bars, lines) into tabular data.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="p-col-label">My Contributions</div>
+                            <ul class="p-list">
+                                <li>Built multimodal extraction using LayoutLM and RCNN encoders.</li>
+                                <li>Implemented object detection for chart element recognition.</li>
+                                <li>Designed chart-to-table reconstruction logic.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-tech">
+                        <span class="tag">LayoutLM</span> <span class="tag">Computer Vision</span> <span class="tag">Transformers</span> <span class="tag">OCR</span>
+                    </div>
+                </article>
+
+                <!-- 5. LEGAL CLAUSE FINDER -->
+                <article class="project-card">
+                    <div class="p-head">
+                        <div>
+                            <div class="p-title">Legal Clause Finder</div>
+                            <div class="p-client">Cognizer</div>
+                        </div>
+                        <span class="badge badge-nlp">Semantic Search</span>
+                    </div>
+                    <div class="p-premise">
+                        <strong>Use Case:</strong> Empower legal teams to find clause variations (e.g., "Indemnity") based on meaning rather than brittle keyword matches across massive repositories.
+                    </div>
+                    <div class="p-body">
+                        <div>
+                            <div class="p-col-label">What the System Does</div>
+                            <ul class="p-list">
+                                <li>Delivers semantic search using domain-tuned similarity models.</li>
+                                <li>Retrieves clauses based on conceptual meaning.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="p-col-label">My Contributions</div>
+                            <ul class="p-list">
+                                <li>Built domain-specific clause embeddings (Contrastive Learning).</li>
+                                <li>Implemented few-shot semantic caching for speed.</li>
+                                <li>Designed ranking logic for legal relevance.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-tech">
+                        <span class="tag">Contrastive Learning</span> <span class="tag">Embeddings</span> <span class="tag">Vector DB</span>
+                    </div>
+                </article>
+
+                <!-- 6. CYBERSECURITY SENTINEL -->
+                <article class="project-card">
+                    <div class="p-head">
+                        <div>
+                            <div class="p-title">Cybersecurity Sentinel</div>
+                            <div class="p-client">Aitomatic</div>
+                        </div>
+                        <span class="badge badge-sec">Code Intelligence</span>
+                    </div>
+                    <div class="p-premise">
+                        <strong>Use Case:</strong> Scalable, automated detection of CWE vulnerabilities across multi-language codebases where rule-based systems fail.
+                    </div>
+                    <div class="p-body">
+                        <div>
+                            <div class="p-col-label">What the System Does</div>
+                            <ul class="p-list">
+                                <li>Detects vulnerabilities using LLM-based semantic understanding.</li>
+                                <li>Provides explainable CWE classifications for security analysts.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="p-col-label">My Contributions</div>
+                            <ul class="p-list">
+                                <li>Finetuned LLMs (CodeBERT/Llama) for code understanding.</li>
+                                <li>Designed normalization layers for unified security schemas.</li>
+                                <li>Built evaluation systems on vulnerability benchmarks.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-tech">
+                        <span class="tag">LLM Fine-tuning</span> <span class="tag">CodeBERT</span> <span class="tag">Knowledge Graphs</span>
+                    </div>
+                </article>
+
+                <!-- 7. VIDEO EDITOR (Renamed) -->
+                <article class="project-card">
+                    <div class="p-head">
+                        <div>
+                            <div class="p-title">AI Video Editor → Voice Cloning + Lip Syncing</div>
+                            <div class="p-client">LoginRadius</div>
+                        </div>
+                        <span class="badge badge-genai">Generative Media</span>
+                    </div>
+                    <div class="p-premise">
+                        <strong>Use Case:</strong> Allow content creators to edit video speech by simply editing text, eliminating the need for expensive re-shoots.
+                    </div>
+                    <div class="p-body">
+                        <div>
+                            <div class="p-col-label">What the System Does</div>
+                            <ul class="p-list">
+                                <li>Clones voice and generates lip movements from text input.</li>
+                                <li>Aligns audio-visuals for pitch and temporal coherence.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="p-col-label">My Contributions</div>
+                            <ul class="p-list">
+                                <li>Built GAN-based voice cloning & frame synthesis pipelines.</li>
+                                <li>Implemented facial landmark detection & audio-driven lip sync.</li>
+                                <li>Designed signal processing for audio-visual alignment.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-tech">
+                        <span class="tag">GANs</span> <span class="tag">Audio Processing</span> <span class="tag">PyTorch</span> <span class="tag">Diffusion</span>
+                    </div>
+                </article>
+
+                <!-- 8. VEHICLE DAMAGE -->
+                <article class="project-card">
+                    <div class="p-head">
+                        <div>
+                            <div class="p-title">Vehicle Damage Detection</div>
+                            <div class="p-client">Acko + Databricks</div>
+                        </div>
+                        <span class="badge badge-cv">Computer Vision</span>
+                    </div>
+                    <div class="p-premise">
+                        <strong>Use Case:</strong> Accelerate insurance claims processing by automatically classifying vehicle defects from user-uploaded images.
+                    </div>
+                    <div class="p-body">
+                        <div>
+                            <div class="p-col-label">What the System Does</div>
+                            <ul class="p-list">
+                                <li>Classifies defects using YOLO and LLM reasoning.</li>
+                                <li>Scales inference via Databricks workflows.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="p-col-label">My Contributions</div>
+                            <ul class="p-list">
+                                <li>Built YOLO detection workflows for multi-defect classes.</li>
+                                <li>Integrated LLMs for structured validation.</li>
+                                <li>Built continuous retraining pipelines in Databricks.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-tech">
+                        <span class="tag">YOLO</span> <span class="tag">Databricks</span> <span class="tag">MLflow</span> <span class="tag">CV</span>
+                    </div>
+                </article>
+                
+                <!-- 9. BALL TRACKING -->
+                <article class="project-card">
+                    <div class="p-head">
+                        <div>
+                            <div class="p-title">Ball Tracking System</div>
+                            <div class="p-client">SportzEngage</div>
+                        </div>
+                        <span class="badge badge-cv">Sports Analytics</span>
+                    </div>
+                    <div class="p-premise">
+                        <strong>Use Case:</strong> Provide professional-grade cricket analytics (trajectory, delivery type) using only low-FPS mobile footage.
+                    </div>
+                    <div class="p-body">
+                        <div>
+                            <div class="p-col-label">What the System Does</div>
+                            <ul class="p-list">
+                                <li>Tracks trajectory and segments deliveries from noisy video.</li>
+                                <li>Corrects detection errors using temporal smoothing.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="p-col-label">My Contributions</div>
+                            <ul class="p-list">
+                                <li>Built background subtraction and mobile ROI detection.</li>
+                                <li>Developed lightweight ball classification models.</li>
+                                <li>Designed outlier removal pipelines.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-tech">
+                        <span class="tag">OpenCV</span> <span class="tag">PyTorch</span> <span class="tag">Motion Analysis</span>
+                    </div>
+                </article>
+
+            </div>
         </section>
 
-        <!-- Experience -->
-        <section id="previous_projects">
-          <h2> A couple of years ago, I was upto... </h2>
-          <div class="project">
-            <h3>Weighted Gaussian variants of Class Anchor Clustering Loss function for detection of COVID-19 from Chest X-ray images using Transfer Learning (Also presented in GTC 2020)</h3>
-            <a href="https://github.com/sumitrj/ChestXray-TransferLearning" target="_blank">See Code</a>
-          </div>
-          <div class="project">
-            <h3>iHearIT: World’s first intelligent hearing aid</h3>
-            <a href="https://github.com/sumitrj/iHearIT" target="_blank">See Code</a>
-          </div>
-          <div class="project">
-            <h3>rClassify: Boolean classifier of Diabetic Reptipathic condition for Fundus images</h3>
-            <a href="https://github.com/sumitrj/rClassify" target="_blank">See Code</a>
-          </div>
-          <div class="project">
-            <h3>Connected-Q: Multi-agent reinforcement learning algorithm</h3>
-            <a href="https://github.com/sumitrj/ConnectedQ-Multi-agent-Reinforcement-Learning-Algorithm" target="_blank">See Code</a>
-          </div>
+        <!-- OPEN PROJECTS (New Section) -->
+        <section>
+            <div class="section-title">
+                <span class="material-symbols-rounded section-icon">code_blocks</span> Open Source & Side Projects
+            </div>
 
+            <div class="project-grid">
+
+                <!-- 1. CAREER COMPASS -->
+                <article class="project-card">
+                    <div class="p-head">
+                        <div>
+                            <div class="p-title">CareerCompass: Intelligent Job Market Analysis</div>
+                            <div class="p-client">Open Source</div>
+                        </div>
+                        <span class="badge badge-open">Open Source</span>
+                    </div>
+                    <div class="p-premise">
+                        <strong>Use Case:</strong> Job seekers often struggle to find roles that truly match their skills or understand specific gaps preventing employment.
+                    </div>
+                    <div class="p-body">
+                        <div>
+                            <div class="p-col-label">What the System Does</div>
+                            <ul class="p-list">
+                                <li>Applies custom filtering to search job listings.</li>
+                                <li>Performs "Fit-Gap" analysis between resumes and job clusters.</li>
+                                <li>Provides guided upskilling paths based on identified gaps.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="p-col-label">Tech Stack</div>
+                            <div class="p-tech" style="padding:0; border:none; margin-top:0;">
+                                <span class="tag">Python</span> <span class="tag">Clustering</span> <span class="tag">LLMs</span> <span class="tag">Vector Search</span> <span class="tag">Streamlit</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 2. AI NEWS GENERATOR -->
+                <article class="project-card">
+                    <div class="p-head">
+                        <div>
+                            <div class="p-title">AI News Generator: Automated Content Pipeline</div>
+                            <div class="p-client">Side Project</div>
+                        </div>
+                        <span class="badge badge-open">Generative Pipeline</span>
+                    </div>
+                    <div class="p-premise">
+                        <strong>Use Case:</strong> A whimsical, fully automated pipeline to consume news via engaging AI-generated video rather than static text.
+                    </div>
+                    <div class="p-body">
+                        <div>
+                            <div class="p-col-label">What the System Does</div>
+                            <ul class="p-list">
+                                <li>Scrapes latest headlines and rephrases scripts using LLMs.</li>
+                                <li>Generates thematic imagery and talking avatars.</li>
+                                <li>Compiles assets into a final presented news video.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="p-col-label">Tech Stack</div>
+                            <div class="p-tech" style="padding:0; border:none; margin-top:0;">
+                                <span class="tag">Scraping</span> <span class="tag">TTS</span> <span class="tag">Stable Diffusion</span> <span class="tag">Wav2Lip</span> <span class="tag">LLMs</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
         </section>
-        <!-- Skills -->
+        
+        <!-- PREVIOUS EXP -->
+        <section>
+            <div class="section-title">
+                <span class="material-symbols-rounded section-icon">history</span> Previous Experience
+            </div>
+            
+            <div class="edu-item">
+                <div class="exp-header">
+                    <div class="exp-role">Software Engineer, Edison AI Team</div>
+                    <div class="exp-company">GE Healthcare</div>
+                    <div class="exp-date">Aug 2021 – May 2022</div>
+                </div>
+                <div class="role-overview" style="margin-bottom:16px; padding:12px;">
+                    <strong>Overview:</strong> Focused on the Edison AI Platform, developing SDKs and scalable microservices to orchestrate machine learning workflows in clinical settings.
+                </div>
+                <ul class="p-list">
+                    <li>Built Python SDK for dataset upload, job orchestration, and result tracking.</li>
+                    <li>Implemented AWS Lambda and Kubernetes-based backend services.</li>
+                    <li>Designed secure data transfer and execution monitoring pipelines.</li>
+                </ul>
+            </div>
 
-  <!-- Publications -->
-  <section id="publications">
-    <h2>I Wrote Papers in Undergrad, Read Them?</h2>
-    <div class="publication">
-      <p>Design and Algorithms of the Device to predict Blood Glucose Level based on Saliva Sample using Machine Learning</p>
-      <a href="https://ieeexplore.ieee.org/document/8987866" target="_blank">Read Paper</a> | <a href="https://github.com/sumitrj/DiaBeaTiT" target="_blank">See Code</a>
-    </div>
-    <div class="publication">
-      <p>WiFi-based Indoor Positioning System using Machine Learning and Multi-Node Triangulation Algorithms</p>
-      <a href="https://ieeexplore.ieee.org/document/9225350" target="_blank">Read Paper</a> | <a href="https://github.com/sumitrj/WiFi.Locate" target="_blank">See Code</a>
-    </div>
-    <div class="publication">
-      <p>Failure Prediction systems for IoT connected machines using Machine Learning</p>
-      <a href="https://ieeexplore.ieee.org/document/8987843" target="_blank">Read Paper</a> | <a href="https://github.com/sumitrj/AutoConnect" target="_blank">See Code</a>
-    </div>
-    <div class="publication">
-      <p>Performance Analysis of the Classifiers for Optical Character Recognition</p>
-      <a href="https://ieeexplore.ieee.org/document/9065710" target="_blank">Read Paper</a> | <a href="https://github.com/sumitrj/Devanagari-OCR" target="_blank">See Code</a>
-    </div>
-  </section>
+            <div class="edu-item">
+                <div class="exp-header">
+                    <div class="exp-role">Machine Learning Research Intern</div>
+                    <div class="exp-company">NVIDIA</div>
+                    <div class="exp-date">Apr 2019 – Apr 2020</div>
+                </div>
+                <div class="role-overview" style="margin-bottom:16px; padding:12px;">
+                    <strong>Overview:</strong> Conducted applied research in medical imaging, focusing on few-shot learning and unsupervised clustering for pathology detection.
+                </div>
+                <ul class="p-list">
+                    <li>Built multi-channel transfer learning pipelines for chest X-ray analysis.</li>
+                    <li>Designed novel loss functions for class imbalance handling.</li>
+                    <li>Built unsupervised sampling workflows. Presented at <strong>NVIDIA GTC 2020</strong>.</li>
+                </ul>
+            </div>
+        </section>
 
-  <!-- Achievements -->
-  <section id="achievements">
-    <h2>You Might Have Seen Me When I...</h2>
-    <div class="skill-button">
-        <h3>
-            Spoke at NVIDIA GTC 2020
-        </h3>
-    </div>
+        <!-- EDUCATION -->
+        <section>
+            <div class="section-title">
+                <span class="material-symbols-rounded section-icon">school</span> Education & Research
+            </div>
+            
+            <div class="edu-item">
+                <div style="display:flex; justify-content:space-between; margin-bottom:12px; flex-wrap:wrap;">
+                    <div>
+                        <div style="font-weight:700; font-size:1.1rem;">B.Tech — ECE (IoT)</div>
+                        <div style="color:var(--primary); font-weight:500;">VIT Vellore</div>
+                    </div>
+                    <div style="font-family:var(--font-mono); font-size:0.9rem;">2017–2021</div>
+                </div>
+                <p style="font-size:0.95rem; margin-bottom:16px;">
+                    Technical Head of IET-VIT & Microsoft Student Ambassador (β).
+                </p>
 
-    </div>
+                <!-- PUBLICATIONS LIST -->
+                <div class="pub-list">
+                    
+                    <!-- Paper 1 (NVIDIA) -->
+                    <div class="pub-item">
+                        <div class="pub-title">Weighted Gaussian Variants of Class Anchor Clustering Loss for COVID-19 Detection from Chest X-ray Images (NVIDIA Internship)</div>
+                        <div class="pub-meta">
+                            <a href="https://event.on24.com/wcc/r/2661799/896A1448EE30E447B088ED88AA458385" target="_blank" class="pub-action">
+                                <span class="material-symbols-rounded" style="font-size:16px">play_circle</span> Watch Talk
+                            </a>
+                            <a href="https://github.com/sumitrj/ChestXray-TransferLearning" target="_blank" class="pub-action">
+                                <span class="material-symbols-rounded" style="font-size:16px">code</span> See Code
+                            </a>
+                        </div>
+                    </div>
 
-    <div class="skill-button">
-      <h3>
-          Was recognized among Top 30 Microsoft Student Partners of APAC
-      </h3>
-  </div>
-  <div class="skill-button">
-  <h3>Won Aidetic launchpad hackathon</h3></div>
-  <div class="skill-button"><h3>Won MLH Mental Health Hackathon</h3></div>
-  <div class="skill-button"><h3>Won Startup VIT</h3></div>
-  <div class="skill-button"><h3>Won IET's Zonal PATW</h3></div>
-  <div class="skill-button"><h3>Came third in GE Healthcare precision health challenge</h3></div>
-</section>
+                    <!-- Paper 2 (Glucose) -->
+                    <div class="pub-item">
+                        <div class="pub-title">Design and Algorithms of a Device to Predict Blood Glucose Level Using Saliva Samples</div>
+                        <div class="pub-meta">
+                            <a href="https://ieeexplore.ieee.org/document/8987866" target="_blank" class="pub-action">
+                                <span class="material-symbols-rounded" style="font-size:16px">description</span> Read Paper
+                            </a>
+                            <a href="https://github.com/sumitrj/DiaBeaTiT" target="_blank" class="pub-action">
+                                <span class="material-symbols-rounded" style="font-size:16px">code</span> See Code
+                            </a>
+                        </div>
+                    </div>
 
-<!-- Other Creations -->
-<section id="useless-creations">
-  <h2>Cool and Not Completely Useless Creations:</h2>
-  <div class="useless-creation">
-    <h3>AI News Report Video Generator</h3>
-  </div>
-  <div class="useless-creation">
-    <h3>AI Question Paper Creator</h3>
-  </div>
-  <div class="useless-creation">
-    <h3>Whistle to Tune</h3>
-  </div>
-</section>
+                    <!-- Paper 3 (WiFi) -->
+                    <div class="pub-item">
+                        <div class="pub-title">WiFi-based Indoor Positioning System Using Machine Learning and Multi-Node Triangulation</div>
+                        <div class="pub-meta">
+                            <a href="https://ieeexplore.ieee.org/document/9225350" target="_blank" class="pub-action">
+                                <span class="material-symbols-rounded" style="font-size:16px">description</span> Read Paper
+                            </a>
+                            <a href="https://github.com/sumitrj/WiFi.Locate" target="_blank" class="pub-action">
+                                <span class="material-symbols-rounded" style="font-size:16px">code</span> See Code
+                            </a>
+                        </div>
+                    </div>
 
-<!-- Contact -->
-<section id="contact" style="grid-column: 1 / -1;">
-  <h2>Like What You See? Let's Chat!</h2>
-  <p>Email: sumitrj99@gmail.com</p>
-</section>
+                    <!-- Paper 4 (IoT Failure) -->
+                    <div class="pub-item">
+                        <div class="pub-title">Failure Prediction Systems for IoT-Connected Machines Using Machine Learning</div>
+                        <div class="pub-meta">
+                            <a href="https://ieeexplore.ieee.org/document/8987843" target="_blank" class="pub-action">
+                                <span class="material-symbols-rounded" style="font-size:16px">description</span> Read Paper
+                            </a>
+                            <a href="https://github.com/sumitrj/AutoConnect" target="_blank" class="pub-action">
+                                <span class="material-symbols-rounded" style="font-size:16px">code</span> See Code
+                            </a>
+                        </div>
+                    </div>
 
-<!-- Footer -->
-<footer style="grid-column: 1 / -1;">
-  <p>© 2023 Sumit Jahagirdar. All rights reserved. Thanks for stopping by!</p>
-</footer>
+                    <!-- Paper 5 (OCR) -->
+                    <div class="pub-item">
+                        <div class="pub-title">Performance Analysis of Classifiers for Optical Character Recognition</div>
+                        <div class="pub-meta">
+                            <a href="https://ieeexplore.ieee.org/document/9065710" target="_blank" class="pub-action">
+                                <span class="material-symbols-rounded" style="font-size:16px">description</span> Read Paper
+                            </a>
+                            <a href="https://github.com/sumitrj/Devanagari-OCR" target="_blank" class="pub-action">
+                                <span class="material-symbols-rounded" style="font-size:16px">code</span> See Code
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <footer style="margin-top:48px; border-top:1px solid var(--outline-variant); padding-top:24px; text-align:center; color:var(--text-subtle); font-size:0.85rem;">
+            © 2025 Sumit Jahagirdar. All rights reserved.
+        </footer>
+
+    </main>
+</div>
 
 </body>
 </html>
