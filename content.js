@@ -45,8 +45,8 @@ window.SITE_CONTENT = {
       {
         "name": "Agent Factory",
         "badge": { "text": "Enterprise Agent Runtime", "variant": "build" },
-        "client": "Built for Docomo Group, a Japanese multilingual analytics product.",
-        "desc": "Built an AI agent that lets enterprise users query their databases using natural language in Japanese and English, masking complex SQL queries and python scripts.",
+        "client": "Docomo Group",
+        "desc": "Built a Japanese multilingual chatbot, to serve 400 users across 166+ tables and 1100+ columns.",
         "points": [
           "Architected a custom state-separated agent runtime bypassing standard LangGraph orchestration to securely isolate conversation, execution, semantic, and data object states.",
           "Developed a Python execution engine allowing agents to compute on-the-fly statistical models against governed data.",
@@ -61,7 +61,7 @@ window.SITE_CONTENT = {
         "name": "Datalogist",
         "badge": { "text": "Data Intelligence", "variant": "data" },
         "client": null,
-        "desc": "Accelerated Silver-to-Gold data pipeline generation by automating manual semantic grouping and data warehouse modeling.",
+        "desc": "Accelerated Silver->Gold->AI data pipeline generation by automating manual semantic grouping and data warehouse modeling.",
         "points": [
           "Built a semantic inference engine that crawls unstructured data warehouse partitions to map latent domain relationships.",
           "Implemented algorithmic table clustering to autonomously generate AI-ready data spaces and schemas."
@@ -88,14 +88,34 @@ window.SITE_CONTENT = {
     "sub": "Production deployments across finance, legal, security, and media.",
     "items": [
       {
+        "title": "P&G - Trade Fund Manager",
+        "client": "P&G ANZ and JP",
+        "badge": { "text": "Self Serve Analytics Chatbot", "variant": "doc" },
+        "useCase": "P&G sales team needed a chatbot that would integrate with data and served ML models to provide observational insights",
+        "does": [
+          "Uses a set of calibrated SQL templates as a tool and fallbacks to SQL generation",
+          "Retains context across conversations and uses it to provide context aware responses",
+          "Serves ML models as tools to provide explanations and insights",
+          "Enforces secure interfaces for data and tool access to agents and users"
+        ],
+        "contributions": [
+          "Built a generalized text-to-sql system.",
+          "Implemented interfaces for secure AI access and data safety.",
+          "Implemented long term and short term memory."
+        ],
+        "tech": ["Langgraph", "LLMs", "NLP", "Langchain", "Semantic Search"]
+      },
+      {
         "title": "Credit Agreement Parser",
+        "client": "73 Strings",
         "badge": { "text": "Legal Tech", "variant": "doc" },
-        "useCase": "Automated data extraction from massive 200+ page credit agreements, parsing raw legal text directly into structured SEC Master tables to replace manual review.",
+        "useCase": "Automate extraction of key information from massive 200+ page credit agreements.",
         "does": [
           "Converts unstructured legal blocks into strict relational financial databases.",
           "Tracks state and context across long-range clause dependencies and nested definitions."
         ],
         "contributions": [
+          "Made the client forget about Gemini's 2M token window, it accepts 2M, doesn't mean it has been trained to process legal docs at scale.",
           "Built text segmentation logic to reliably isolate covenants and definitions.",
           "Developed cross-reference tracing algorithms to map logic across disjointed document sections.",
           "Designed clause normalization pipelines to format messy text into predictable schemas."
@@ -104,9 +124,9 @@ window.SITE_CONTENT = {
       },
       {
         "title": "AI Call Analyzer",
-        "client": "Internal R&D",
+        "client": "Mihup AI",
         "badge": { "text": "NLP and Analytics", "variant": "nlp" },
-        "useCase": "Replaced random-sample manual grading with 100% automated call QA, aligning agent performance tracking directly with enterprise compliance KPIs.",
+        "useCase": "Automate call QA, aligning caller performance tracking directly with enterprise compliance KPIs.",
         "does": [
           "Ingests audio streams to execute configurable, LLM-driven grading rubrics.",
           "Computes quantitative scores for KPIs including objection handling, compliance, and script adherence."
@@ -135,26 +155,10 @@ window.SITE_CONTENT = {
         "tech": ["Whisper", "Coqui TTS", "MakeItTalk", "Python", "Audio Processing", "System Architecture"]
       },
       {
-        "title": "Financial and Document Parsing Suite",
-        "client": "73Strings",
-        "badge": { "text": "Multimodal AI", "variant": "doc" },
-        "useCase": "Unlocked automated downstream analytics by converting unstructured, multi-format financial media into high-integrity relational databases.",
-        "does": [
-          "Extracts and normalizes tables, charts, and entities into analytics-ready schemas.",
-          "Reconstructs visual chart topologies into source tabular data."
-        ],
-        "contributions": [
-          "Trained and deployed multimodal extraction pipelines utilizing LayoutLM and RCNN encoders.",
-          "Developed custom object detection models for granular chart element recognition.",
-          "Engineered transformation logic to reconstruct visual elements into tabular formats."
-        ],
-        "tech": ["LayoutLM", "Computer Vision", "Transformers", "OCR", "Object Detection", "Multimodal"]
-      },
-      {
         "title": "Ball Tracking System",
         "client": "SportzEngage",
         "badge": { "text": "Sports Analytics", "variant": "cv" },
-        "useCase": "Democratized professional-grade sports analytics, extracting high-fidelity trajectory and delivery KPIs from low-FPS mobile footage.",
+        "useCase": "Derive ball trajectory, speed, and bounce point from cell-phone shot cricket videos to provide insights to coaches",
         "does": [
           "Executes sub-pixel ball tracking and delivery segmentation on high-noise video streams.",
           "Applies temporal smoothing functions to correct transient detection failures."
@@ -167,10 +171,26 @@ window.SITE_CONTENT = {
         "tech": ["OpenCV", "PyTorch", "Motion Analysis", "Lightweight Models"]
       },
       {
+        "title": "Financial and Document Parsing Suite",
+        "client": "73Strings",
+        "badge": { "text": "Multimodal AI", "variant": "doc" },
+        "useCase": "Reduce 90% effort of Private Equity Analysts in standardizing financials of funds and companies.",
+        "does": [
+          "Extracts and normalizes tables, charts, and entities into analytics-ready schemas.",
+          "Reconstructs visual chart topologies into source tabular data."
+        ],
+        "contributions": [
+          "Trained and deployed multimodal extraction pipelines utilizing LayoutLM and RCNN encoders.",
+          "Developed custom object detection models for granular chart element recognition.",
+          "Engineered transformation logic to reconstruct visual elements into tabular formats."
+        ],
+        "tech": ["LayoutLM", "Computer Vision", "Transformers", "OCR", "Object Detection", "Multimodal"]
+      },
+      {
         "title": "Legal Clause Finder",
         "client": "Cognizer",
         "badge": { "text": "Semantic Search", "variant": "nlp" },
-        "useCase": "Drastically reduced legal discovery time by replacing brittle keyword matching with domain-tuned semantic retrieval across enterprise repositories.",
+        "useCase": "Implement AI based search for legal documents supporting over 1000 classes",
         "does": [
           "Executes semantic similarity search utilizing domain-adapted embedding models.",
           "Retrieves sub-document clauses based on latent semantic meaning rather than lexical overlap."
@@ -186,7 +206,7 @@ window.SITE_CONTENT = {
         "title": "Vehicle Damage Detection",
         "client": "Acko and Databricks",
         "badge": { "text": "Computer Vision", "variant": "cv" },
-        "useCase": "Accelerated insurance claim processing times by automating vehicle defect classification directly from user-uploaded imagery.",
+        "useCase": "Just by clicking a picture, classify the damage of the vehicle for insurance claims",
         "does": [
           "Executes multi-class defect classification utilizing YOLO and LLM-based validation.",
           "Scales parallel inference workloads via Databricks cluster computing."
@@ -200,9 +220,9 @@ window.SITE_CONTENT = {
       },
       {
         "title": "Cybersecurity Sentinel",
-        "client": "Aitomatic",
+        "client": "Panasonic and Aitomatic",
         "badge": { "text": "Code Intelligence", "variant": "sec" },
-        "useCase": "Scaled CWE vulnerability detection across polyglot codebases, outperforming static rule-based tools in precision and explainability.",
+        "useCase": "Participation in DARPA AI Cybersecurity Challenge",
         "does": [
           "Executes vulnerability detection utilizing LLM-based semantic code understanding.",
           "Generates deterministic, explainable CWE classifications for security analysts."
