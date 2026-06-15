@@ -7,8 +7,8 @@ window.SITE_CONTENT = {
   "nav": [
     { "label": "Systems", "section": "systems" },
     { "label": "Work", "section": "work" },
-    { "label": "About", "section": "about" },
-    { "label": "Contact", "section": "contact" }
+    { "label": "Experience & Education", "section": "about" },
+    { "label": "Stories", "section": "stories" }
   ],
   "labels": {
     "useCase": "Business Impact",
@@ -45,8 +45,8 @@ window.SITE_CONTENT = {
       {
         "name": "Agent Factory",
         "badge": { "text": "Enterprise Agent Runtime", "variant": "build" },
-        "client": "Built for Oak Lawn Marketing, a Japanese multilingual analytics product.",
-        "desc": "Enabled zero-SQL data discovery for enterprise users, eliminating engineering bottlenecks for ad-hoc Japanese/English analytics and radically accelerating time-to-insight.",
+        "client": "Built for Docomo Group, a Japanese multilingual analytics product.",
+        "desc": "Built an AI agent that lets enterprise users query their databases using natural language in Japanese and English, masking complex SQL queries and python scripts.",
         "points": [
           "Architected a custom state-separated agent runtime bypassing standard LangGraph orchestration to securely isolate conversation, execution, semantic, and data object states.",
           "Developed a Python execution engine allowing agents to compute on-the-fly statistical models against governed data.",
@@ -83,7 +83,7 @@ window.SITE_CONTENT = {
     ]
   },
   "work": {
-    "eyebrow": "Selected work",
+    "eyebrow": "Select Work at Aays / Aidetic",
     "title": "Client projects",
     "sub": "Production deployments across finance, legal, security, and media.",
     "items": [
@@ -217,15 +217,13 @@ window.SITE_CONTENT = {
     ]
   },
   "about": {
-    "eyebrow": "About",
-    "title": "Background",
-    "intro": "I am an applied AI scientist and engineer with over four years of experience deploying systems to production. I specialize in seizing ambiguous technical problems, architecting the solution, and maintaining strict accountability through to final delivery.",
+    "title": "Experience & Education",
     "experience": {
       "heading": "Experience",
       "items": [
         {
           "role": "Lead Data Scientist",
-          "org": "Aidetic",
+          "org": "Aays / Aidetic",
           "date": "Jun 2022 to Present",
           "desc": "Technical architect for the AI Center of Excellence. Directed engineering and deployment of AI systems across finance, legal, and media, ensuring strict adherence to production KPIs."
         },
@@ -258,7 +256,8 @@ window.SITE_CONTENT = {
       { "type": "copy", "icon": "mail", "text": "sumitrj99@gmail.com", "value": "sumitrj99@gmail.com", "title": "Click to copy email" },
       { "type": "copy", "icon": "call", "text": "+91 73490 49941", "value": "+917349049941", "title": "Click to copy phone" },
       { "type": "link", "icon": "linkedin", "text": "linkedin.com/in/sumitrj", "href": "https://linkedin.com/in/sumitrj" },
-      { "type": "link", "icon": "github", "text": "github.com/sumitrj", "href": "https://github.com/sumitrj" }
+      { "type": "link", "icon": "github", "text": "github.com/sumitrj", "href": "https://github.com/sumitrj" },
+      { "type": "link", "icon": "description", "text": "Download Resume", "href": "./Sumit_Jahagirdar_FDE_Resume.pdf", "download": true }
     ]
   },
   "footer": {
@@ -267,5 +266,20 @@ window.SITE_CONTENT = {
       { "label": "LinkedIn", "href": "https://linkedin.com/in/sumitrj" },
       { "label": "GitHub", "href": "https://github.com/sumitrj" }
     ]
-  }
+  },
+  "stories": {
+    "title": "Stories",
+    "sub": "Articles, essays, and technical writing.",
+    "items": []
+  },
+  "skills": [
+    "Transformers", "vLLM", "OpenAI SDK", "LiteLLM", "MCP", "Ollama", "RAG & Agents", "Diffusion Models", "Fine-tuning - CNN, VLM, LLM [Peft]", "Computer Vision", "NLP", "Recommendation Systems", "Python", "YOLO", "OpenCV", "PyTorch", "Scikit-learn", "FastAPI", "Sagemaker", "CI/CD", "Databricks/Spark", "Pandas/Numpy", "Vector DBs"
+  ],
+  "recognitions": [
+    { "icon": "mic", "title": "Speaker", "sub": "NVIDIA GTC 2020", "href": "https://event.on24.com/wcc/r/2661799/896A1448EE30E447B088ED88AA458385" },
+    { "icon": "star", "title": "Top 30", "sub": "MS Student Partners APAC" },
+    { "icon": "emoji_events", "title": "Winner", "sub": "Aidetic Launchpad Hackathon" },
+    { "icon": "emoji_events", "title": "Winner", "sub": "GE Precision Health" },
+    { "icon": "emoji_events", "title": "Winner", "sub": "IET PATW 2020" }
+  ]
 };

@@ -73,35 +73,59 @@ function section(id, eyebrow, title, sub) {
    Section builders. Each takes its slice of content and returns a node.
    ========================================================================= */
 
-function buildNav(data) {
-    return [
-        el('a', { class: 'nav-brand', href: '#top', text: data.brand }),
-        el('nav', { class: 'nav-links' }, data.nav.map(function (item) {
-            return el('a', { href: '#' + item.section, 'data-section': item.section, text: item.label });
-        }))
-    ];
+function buildTopNav(data) {
+    return el('nav', { class: 'top-nav' }, data.nav.map(function (item) {
+        return el('a', { href: '#' + item.section, 'data-section': item.section, text: item.label });
+    }));
 }
 
-function buildHero(hero, contactItems) {
-    var contactLinks = (contactItems || []).map(function (item) {
+function buildSidebar(data) {
+    var hero = data.hero;
+    var contactLinks = (data.contact.items || []).map(function (item) {
         if (item.type === 'copy') {
             return el('button', {
                 type: 'button', class: 'hero-contact-icon icon-only',
                 'data-copy': item.value, title: item.title
             }, [icon(item.icon)]);
         }
-        return el('a', {
-            class: 'hero-contact-icon', href: item.href, target: '_blank', rel: 'noopener', title: item.text
-        }, [icon(item.icon)]);
+        var aProps = { class: 'hero-contact-icon', href: item.href, target: '_blank', rel: 'noopener', title: item.text };
+        if (item.download) aProps.download = '';
+        return el('a', aProps, [icon(item.icon)]);
     });
 
-    return el('section', { class: 'hero', id: 'top' }, [
-        el('div', { class: 'container' }, [
-            el('h1', { text: hero.title }),
-            el('div', { class: 'hero-contact-row' }, contactLinks),
-            el('div', { class: 'role', text: hero.role }),
-            el('p', { class: 'lead', text: hero.lead })
-        ])
+    var skillsGroup = el('div', { class: 'sidebar-card' }, [
+        el('span', { class: 'skill-header', text: 'Tech Stack' }),
+        el('div', { class: 'skill-tags' }, (data.skills || []).map(function(s) {
+            return el('span', { class: 'tag', text: s });
+        }))
+    ]);
+
+    var recognitionsGroup = el('div', { class: 'sidebar-card' }, [
+        el('span', { class: 'skill-header', text: 'Recognition' }),
+        el('div', { class: 'award-list' }, (data.recognitions || []).map(function(r) {
+            var iconBox = el('div', { class: 'award-icon-box' }, [icon(r.icon)]);
+            var content = el('div', { class: 'award-content' }, [
+                el('strong', { text: r.title }),
+                el('span', { text: r.sub })
+            ]);
+            if (r.href) {
+                return el('a', { class: 'award-item', href: r.href, target: '_blank' }, [iconBox, content]);
+            }
+            return el('div', { class: 'award-item' }, [iconBox, content]);
+        }))
+    ]);
+
+    return el('div', { class: 'sidebar-container' }, [
+        el('div', { class: 'sidebar-card profile-card' }, [
+            el('div', { class: 'profile-header' }, [
+                el('h1', { text: hero.title }),
+                el('div', { class: 'hero-contact-row' }, contactLinks),
+                el('div', { class: 'role', text: hero.role }),
+                el('p', { class: 'lead', text: hero.lead })
+            ])
+        ]),
+        skillsGroup,
+        recognitionsGroup
     ]);
 }
 
@@ -115,6 +139,69 @@ function buildWhatIDo(items) {
                     el('p', { text: c.body })
                 ]);
             }))
+        ])
+    ]);
+}
+
+function buildStories(stories) {
+    if (!stories) return el('div');
+    var articles = window.SITE_ARTICLES || [];
+    return el('section', { class: 'section', id: 'stories', 'aria-label': 'Stories' }, [
+        el('div', { class: 'container' }, [
+            el('h2', { class: 'section-title', text: stories.title }),
+            el('p', { class: 'section-sub', text: stories.sub }),
+            articles.length > 0
+                ? el('div', { class: 'story-list' }, articles.map(function(item) {
+                      var thumbnail = item.thumbnail ? el('div', { class: 'story-thumbnail' }, [
+                          el('img', { src: item.thumbnail, alt: item.title })
+                      ]) : null;
+
+                      var title = el('h3', { class: 'story-talking-title', text: item.title });
+
+                      var parsedHtml = item.markdown ? marked.parse(item.markdown) : '';
+
+                      var contentContainer = el('div', { class: 'story-content' }, [
+                          item.glance ? el('div', { class: 'p-premise' }, [
+                              el('strong', { text: 'At a Glance: ' }),
+                              el('span', { text: item.glance })
+                          ]) : null,
+                          parsedHtml ? el('div', { class: 'p-body story-body', html: parsedHtml }) : null
+                      ]);
+
+                      var btn = el('button', { class: 'story-read-more' }, [
+                          el('span', { class: 'read-more-text', text: 'Read more' }),
+                          el('span', { class: 'material-symbols-rounded', text: 'expand_more' })
+                      ]);
+
+                      var article = el('article', { class: 'project-card story-item' }, [
+                          thumbnail,
+                          el('div', { class: 'story-header' }, [title]),
+                          contentContainer,
+                          btn
+                      ]);
+
+                      var toggleExpanded = function() {
+                          article.classList.toggle('expanded');
+                          var icon = btn.querySelector('.material-symbols-rounded');
+                          var textSpan = btn.querySelector('.read-more-text');
+                          if (article.classList.contains('expanded')) {
+                              textSpan.textContent = 'Read less';
+                              icon.textContent = 'expand_less';
+                          } else {
+                              textSpan.textContent = 'Read more';
+                              icon.textContent = 'expand_more';
+                          }
+                      };
+
+                      btn.addEventListener('click', toggleExpanded);
+                      if (thumbnail) {
+                          thumbnail.addEventListener('click', toggleExpanded);
+                          thumbnail.style.cursor = 'pointer';
+                      }
+
+                      return article;
+                  }))
+                : el('div', { style: 'font-style: italic; color: var(--text-subtle);' }, ['Articles coming soon...'])
         ])
     ]);
 }
@@ -225,9 +312,12 @@ function buildContact(data) {
                 el('span', { class: 'material-symbols-rounded copy-icon', text: 'content_copy' })
             ]);
         }
-        return el('a', {
-            class: 'contact-item', href: item.href, target: '_blank', rel: 'noopener'
-        }, [icon(item.icon), item.text]);
+        var aProps = { class: 'contact-item', href: item.href, target: '_blank', rel: 'noopener' };
+        if (item.download) aProps.download = '';
+        return el('a', aProps, [
+            icon(item.icon),
+            el('span', { text: item.text })
+        ]);
     });
     s.wrap.appendChild(el('div', { class: 'container' }, s.head.concat([
         el('div', { class: 'contact-grid' }, rows)
@@ -294,7 +384,7 @@ function initCopy(root) {
 }
 
 function initScrollSpy(root) {
-    var navLinks = Array.prototype.slice.call(root.querySelectorAll('.nav-links a[data-section]'));
+    var navLinks = Array.prototype.slice.call(document.querySelectorAll('.top-nav a[data-section]'));
     if (!navLinks.length) return;
 
     var sections = navLinks
@@ -333,17 +423,19 @@ function render(data) {
     if (desc) desc.setAttribute('content', data.meta.description);
 
     var navRoot = document.getElementById('nav-root');
+    var sidebarRoot = document.getElementById('sidebar-root');
     var mainRoot = document.getElementById('main-root');
     var footerRoot = document.getElementById('footer-root');
 
-    buildNav(data).forEach(function (n) { navRoot.appendChild(n); });
+    if (navRoot) navRoot.appendChild(buildTopNav(data));
+    sidebarRoot.appendChild(buildSidebar(data));
 
     [
-        buildHero(data.hero, data.contact.items),
         buildWhatIDo(data.whatIDo),
         buildSystems(data.systems),
         buildWork(data.work, data.labels),
         buildAbout(data.about),
+        buildStories(data.stories),
         buildContact(data.contact)
     ].forEach(function (s) { mainRoot.appendChild(s); });
 
