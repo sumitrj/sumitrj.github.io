@@ -356,7 +356,7 @@ main section[id] { scroll-margin-top: 40px; }
 /* --- MOBILE --- */
 @media (max-width: 960px) {
     .wrapper { grid-template-columns: 1fr; gap: 32px; padding: 24px 16px; }
-    .sidebar { position: static; }
+    .sidebar { position: static; max-height: none; overflow-y: visible; }
     .sidebar-card { padding: 24px; }
     .sidebar-nav { display: none; } /* Hide side nav on mobile, use scrolling */
     
