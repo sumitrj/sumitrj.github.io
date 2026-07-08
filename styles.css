@@ -93,6 +93,10 @@ h1 {
 .hero-lead { margin-top: 22px; color: var(--body-c); font-size: 1.04rem; max-width: 680px; }
 .hero-orgs { margin-top: 12px; color: var(--body-c); font-size: 1.04rem; max-width: 680px; }
 .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+.hero-next {
+    margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--rule);
+    color: var(--muted); font-size: 0.92rem;
+}
 
 /* --- BUTTONS --- */
 .btn {
