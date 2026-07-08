@@ -3,34 +3,310 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sumit Jahagirdar</title>
-    <meta name="description" content="">
+    <title>Sumit Jahagirdar | AI Architect / Engineer</title>
+    <meta name="description" content="Sumit Jahagirdar is an AI architect and engineer. Five years building AI agents and the models behind them: scoping, architecture, implementation, and production deployment.">
+    <link rel="canonical" href="https://sumitrj.github.io/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sumitrj.github.io/">
+    <meta property="og:title" content="Sumit Jahagirdar | AI Architect / Engineer">
+    <meta property="og:description" content="I build AI agents and the models behind them. Built a production data agent serving 400 users at Docomo Group. Previously GE Healthcare and NVIDIA.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Sumit Jahagirdar | AI Architect / Engineer">
+    <meta name="twitter:description" content="I build AI agents and the models behind them. Built a production data agent serving 400 users at Docomo Group. Previously GE Healthcare and NVIDIA.">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Sumit Jahagirdar",
+      "jobTitle": "AI Architect / Engineer",
+      "url": "https://sumitrj.github.io/",
+      "email": "mailto:sumitrj99@gmail.com",
+      "address": { "@type": "PostalAddress", "addressLocality": "Bengaluru", "addressCountry": "IN" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "VIT Vellore" },
+      "worksFor": { "@type": "Organization", "name": "Aays / Aidetic" },
+      "sameAs": [
+        "https://linkedin.com/in/sumitrj",
+        "https://github.com/sumitrj"
+      ]
+    }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..800;1,6..72,400..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
 
-<!-- Structure only. All copy lives in content.json and is rendered by script.js. -->
 <header class="nav">
-    <div class="nav-inner" id="nav-root"></div>
+    <div class="nav-inner">
+        <a class="brand" href="#top">Sumit Jahagirdar</a>
+        <nav class="top-nav" aria-label="Sections">
+            <a href="#work" data-section="work">Work</a>
+            <a href="#experience" data-section="experience">Experience</a>
+            <a href="#writing" data-section="writing">Writing</a>
+            <a href="#contact" data-section="contact">Contact</a>
+        </nav>
+        <a class="nav-resume" href="./Sumit_Jahagirdar_Resume.pdf" download>Resume</a>
+    </div>
+    <div class="progress" aria-hidden="true"></div>
 </header>
 
-<div class="wrapper">
-    <aside class="sidebar" id="sidebar-root"></aside>
-    <main class="main-feed" id="main-root"></main>
-</div>
+<main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+        <p class="kicker" data-parallax="10">AI Architect / Engineer · Bengaluru</p>
+        <h1>Sumit Jahagirdar</h1>
+        <p class="hero-lead">I build AI agents and the models behind them: fine-tuned LLMs and VLMs, custom detection and embedding models, and agent runtimes designed from first principles. I have spent five years shipping 0-to-1 as the sole technical owner, from scoping to production.</p>
+        <p class="hero-orgs">I am now the Lead Data Scientist at Aays / Aidetic. Before that, I was at GE Healthcare and NVIDIA.</p>
+        <div class="hero-cta">
+            <a class="btn" href="mailto:sumitrj99@gmail.com">Email me</a>
+            <a class="btn btn-ghost" href="./Sumit_Jahagirdar_Resume.pdf" download>Download resume</a>
+        </div>
+    </section>
+
+    <!-- 01 · AGENT FACTORY -->
+    <section class="section" id="agent-factory">
+        <p class="kicker" data-parallax="18">01 · Agent Factory · Docomo Group, at Aays / Aidetic</p>
+        <h2>An agent that answers &ldquo;at what spend should we stop investing in this media?&rdquo;</h2>
+        <p class="prose">That question needs a diminishing-returns model, not a database lookup. Agent Factory runs the model live and answers in plain Japanese. Its 400 production users, across media, retail, CRM, and order management, ask it questions like that one, or &ldquo;which products have customer sentiment at risk?&rdquo;, over 166+ tables and 1,100+ columns of company data.</p>
+        <p class="prose">What makes it different: the business controls which analyses exist. An analyst adds a new analysis, a forecast, a cohort comparison, a clustering model, by filling a form in the UI. The system bends to how the business operates instead of locking it into an off-the-shelf product.</p>
+        <ul class="prose-list">
+            <li>I wrote the orchestration, error handling, and processing primitives from first principles, without an agent framework, and kept them simple enough for an analyst to maintain the system unaided.</li>
+            <li>A Python engine runs the statistical models on live data at query time, inside a runtime that keeps conversation, execution, semantics, and data objects in separate states.</li>
+            <li>Every answer is reproducible and auditable: deterministic lineage, access control on every tool, and evaluation hooks.</li>
+        </ul>
+        <p class="how"><span class="how-label">stack</span>Python, FastAPI, Databricks, LLMs, embeddings.</p>
+    </section>
+
+    <!-- 02 · CLIENT WORK -->
+    <section class="section" id="work">
+        <p class="kicker" data-parallax="18">02 · Client work · Aays / Aidetic</p>
+        <h2>Shipped systems across finance, legal, security, and media.</h2>
+        <p class="section-note">The full detail is in the <a href="./Sumit_Jahagirdar_Resume.pdf" download>resume</a>.</p>
+
+        <div class="rows">
+            <article class="row">
+                <div class="row-label">P&amp;G ANZ and Japan</div>
+                <div class="row-body">
+                    <h3>Trade Fund Manager</h3>
+                    <p>P&amp;G sales teams ask plain-language questions about trade funds, the budgets behind retail promotions, and get answers from their data and ML models with no analyst in the loop.</p>
+                    <p class="how"><span class="how-label">how</span>Generalized text-to-SQL with calibrated template tools, long and short-term memory, secure data and tool access.</p>
+                    <p class="how"><span class="how-label">stack</span>Python, LangGraph, LangChain, LLMs, vector DBs.</p>
+                </div>
+            </article>
+            <article class="row">
+                <div class="row-label">73 Strings</div>
+                <div class="row-body">
+                    <h3>Credit Agreement Parser</h3>
+                    <p>Analysts feed in 200+ page credit agreements and get a clean database of terms out: who lends what, under which covenants, on which conditions. There is a <a href="#writing">worked example below</a>.</p>
+                    <p class="how"><span class="how-label">how</span>Text segmentation, cross-reference tracing, clause normalization into predictable schemas.</p>
+                    <p class="how"><span class="how-label">stack</span>Python, LLMs, OCR, document graphs.</p>
+                </div>
+            </article>
+            <article class="row">
+                <div class="row-label">73 Strings</div>
+                <div class="row-body">
+                    <h3>Financial Document Parsing</h3>
+                    <p>Private-equity analysts spend ~90% less effort standardizing fund and company financials.</p>
+                    <p class="how"><span class="how-label">how</span>Multimodal extraction on LayoutLM and RCNN encoders, custom chart-element detection, OCR, chart-to-table reconstruction.</p>
+                    <p class="how"><span class="how-label">stack</span>PyTorch, LayoutLM, RCNN, Transformers, OCR.</p>
+                </div>
+            </article>
+            <article class="row">
+                <div class="row-label">Mihup AI</div>
+                <div class="row-body">
+                    <h3>AI Call Analyzer</h3>
+                    <p>Every support call gets scored on how far the caller strayed from the standard operating procedure, instead of QA sampling a handful.</p>
+                    <p class="how"><span class="how-label">how</span>Whisper ASR with LLM rubric grading, vLLM batching, prompt-redundancy reduction for latency and cost.</p>
+                    <p class="how"><span class="how-label">stack</span>Whisper, vLLM, LLMs, Python.</p>
+                </div>
+            </article>
+            <article class="row">
+                <div class="row-label">Cognizer</div>
+                <div class="row-body">
+                    <h3>Legal Clause Finder</h3>
+                    <p>Lawyers search contracts by meaning rather than keywords, across 1,000+ clause types. There is a <a href="#writing">worked example below</a>.</p>
+                    <p class="how"><span class="how-label">how</span>Clause embeddings trained with contrastive learning, few-shot semantic caching.</p>
+                    <p class="how"><span class="how-label">stack</span>PyTorch, Transformers, embeddings, vector DBs.</p>
+                </div>
+            </article>
+            <article class="row">
+                <div class="row-label">Acko, with Databricks</div>
+                <div class="row-body">
+                    <h3>Vehicle Damage Detection</h3>
+                    <p>Insurers classify vehicle damage from a single photo of the claim.</p>
+                    <p class="how"><span class="how-label">how</span>YOLO detection with LLM-based validation, continuous retraining on MLflow and Delta Lake.</p>
+                    <p class="how"><span class="how-label">stack</span>PyTorch, YOLO, Databricks, MLflow, Delta Lake.</p>
+                </div>
+            </article>
+            <article class="row">
+                <div class="row-label">Panasonic and Aitomatic</div>
+                <div class="row-body">
+                    <h3>Cybersecurity Sentinel</h3>
+                    <p>The system finds vulnerabilities in real code and explains them in security analysts' terms, for the DARPA AI Cyber Challenge.</p>
+                    <p class="how"><span class="how-label">how</span>Fine-tuned Llama models, automated evaluation harnesses against standard benchmarks.</p>
+                    <p class="how"><span class="how-label">stack</span>Llama, PEFT fine-tuning, knowledge graphs, static analysis.</p>
+                </div>
+            </article>
+            <article class="row">
+                <div class="row-label">LoginRadius</div>
+                <div class="row-body">
+                    <h3>Generative AI Video Editor</h3>
+                    <p>Editors cut video by editing the transcript; cloned speech and lip-sync patches fill the gaps.</p>
+                    <p class="how"><span class="how-label">how</span>Whisper word-level alignment, voice cloning, MakeItTalk lip-sync, a timeline reconstruction ledger.</p>
+                    <p class="how"><span class="how-label">stack</span>Whisper, Coqui TTS, MakeItTalk, Python.</p>
+                </div>
+            </article>
+            <article class="row">
+                <div class="row-label">SportzEngage</div>
+                <div class="row-body">
+                    <h3>Ball Tracking</h3>
+                    <p>Coaches get ball trajectory, speed, and bounce point from phone-shot cricket video.</p>
+                    <p class="how"><span class="how-label">how</span>Lightweight edge-optimized detection, temporal smoothing, outlier removal.</p>
+                    <p class="how"><span class="how-label">stack</span>OpenCV, PyTorch.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- 03 · OPEN SOURCE -->
+    <section class="section" id="open-source">
+        <p class="kicker" data-parallax="18">03 · Open Source</p>
+        <h2>Two tools I am open-sourcing.</h2>
+        <div class="rows">
+            <article class="row">
+                <div class="row-label">Data intelligence</div>
+                <div class="row-body">
+                    <h3>Datalogist</h3>
+                    <p>Datalogist maps a raw warehouse into AI-ready data spaces and schemas, work that usually takes a data team months.</p>
+                    <p class="how"><span class="how-label">how</span>Semantic inference over unstructured partitions, algorithmic table clustering.</p>
+                    <p class="how"><span class="how-label">stack</span>Python, embeddings, clustering algorithms.</p>
+                </div>
+            </article>
+            <article class="row">
+                <div class="row-label">Code intelligence</div>
+                <div class="row-body">
+                    <h3>CodePulse</h3>
+                    <p>CodePulse hands Claude Code and Cursor the high-value parts of a codebase as context.</p>
+                    <p class="how"><span class="how-label">how</span>Typed semantic graphs, PageRank-ranked retrieval, served over MCP.</p>
+                    <p class="how"><span class="how-label">stack</span>Python, semantic graphs, PageRank, MCP, Anthropic API.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- 04 · EXPERIENCE -->
+    <section class="section" id="experience">
+        <p class="kicker" data-parallax="18">04 · Experience</p>
+        <h2>Where I have worked.</h2>
+        <div class="rows">
+            <article class="row">
+                <div class="row-label">Jun 2022 to present</div>
+                <div class="row-body">
+                    <h3>Lead Data Scientist · Aays / Aidetic</h3>
+                    <p>I architect solutions during presales, scope them with the client, and lead a small engineering pod through delivery.</p>
+                </div>
+            </article>
+            <article class="row">
+                <div class="row-label">Aug 2021 to May 2022</div>
+                <div class="row-body">
+                    <h3>Software Engineer, Edison AI · GE Healthcare</h3>
+                    <p>I built microservices and a unified Python SDK for clinical ML workflows on AWS Lambda and Kubernetes.</p>
+                </div>
+            </article>
+            <article class="row">
+                <div class="row-label">Apr 2019 to Apr 2020</div>
+                <div class="row-body">
+                    <h3>ML Research Intern · NVIDIA</h3>
+                    <p>I did applied research in medical imaging: few-shot learning and unsupervised clustering for pathology detection. I spoke about this work at <a href="https://event.on24.com/wcc/r/2661799/896A1448EE30E447B088ED88AA458385" target="_blank" rel="noopener">NVIDIA GTC 2020</a>.</p>
+                </div>
+            </article>
+            <article class="row">
+                <div class="row-label">2017 to 2021</div>
+                <div class="row-body">
+                    <h3>B.Tech, Electronics and Communication · VIT Vellore</h3>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- 05 · WRITING -->
+    <section class="section" id="writing">
+        <p class="kicker" data-parallax="18">05 · Writing</p>
+        <h2>How I think, in long form.</h2>
+        <p class="section-note">These are engineering notes from taking AI systems to production.</p>
+        <div id="stories-root"></div>
+        <noscript><p class="section-note">Articles need JavaScript to render.</p></noscript>
+    </section>
+
+    <!-- 06 · CONTACT -->
+    <section class="section" id="contact">
+        <p class="kicker" data-parallax="18">06 · Contact</p>
+        <h2>Write to me.</h2>
+        <p class="prose">If this matches what you are hiring for, email is fastest. I reply within a day.</p>
+        <div class="rows">
+            <div class="row row-tight">
+                <div class="row-label">email</div>
+                <div class="row-body"><p><a href="mailto:sumitrj99@gmail.com">sumitrj99@gmail.com</a> <button type="button" class="copy-btn" data-copy="sumitrj99@gmail.com" title="Copy email">copy</button></p></div>
+            </div>
+            <div class="row row-tight">
+                <div class="row-label">phone</div>
+                <div class="row-body"><p>+91 73490 49941 <button type="button" class="copy-btn" data-copy="+917349049941" title="Copy phone">copy</button></p></div>
+            </div>
+            <div class="row row-tight">
+                <div class="row-label">linkedin</div>
+                <div class="row-body"><p><a href="https://linkedin.com/in/sumitrj" target="_blank" rel="noopener">linkedin.com/in/sumitrj</a></p></div>
+            </div>
+            <div class="row row-tight">
+                <div class="row-label">github</div>
+                <div class="row-body"><p><a href="https://github.com/sumitrj" target="_blank" rel="noopener">github.com/sumitrj</a></p></div>
+            </div>
+            <div class="row row-tight">
+                <div class="row-label">resume</div>
+                <div class="row-body"><p><a href="./Sumit_Jahagirdar_Resume.pdf" download>Download as PDF</a></p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPENDIX · KEYWORDS -->
+    <section class="section section-machines" id="keywords">
+        <p class="kicker" data-parallax="18">Appendix · For the machines</p>
+        <h2>For search engines and applicant tracking systems.</h2>
+        <p class="section-note">Everything above, flattened into keywords. Humans can stop at the email.</p>
+        <div class="rows">
+            <div class="row row-tight">
+                <div class="row-label">AI core</div>
+                <div class="row-body"><p>Deep learning (PyTorch, Transformers), NLP, computer vision (YOLO, OpenCV), speech and signal processing (Whisper/ASR), fine-tuning (LLM/VLM/CNN, PEFT), contrastive learning, diffusion models, OCR, knowledge graphs.</p></div>
+            </div>
+            <div class="row row-tight">
+                <div class="row-label">Agents &amp; LLMs</div>
+                <div class="row-body"><p>AI agents, agent runtimes, RAG, MCP, evals, LangGraph/LangChain, OpenAI SDK, LiteLLM, vLLM, Ollama, prompt and cost optimization, text-to-SQL.</p></div>
+            </div>
+            <div class="row row-tight">
+                <div class="row-label">Engineering</div>
+                <div class="row-body"><p>Python, FastAPI, Databricks/Spark, MLflow, Delta Lake, AWS (Lambda, SageMaker), Kubernetes, CI/CD, vector DBs.</p></div>
+            </div>
+        </div>
+    </section>
+
+</main>
 
 <footer class="site-footer">
-    <div class="footer-inner" id="footer-root"></div>
+    <div class="footer-inner">
+        <div>© 2026 Sumit Jahagirdar</div>
+        <div class="footer-links">
+            <a href="https://linkedin.com/in/sumitrj" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/sumitrj" target="_blank" rel="noopener">GitHub</a>
+        </div>
+    </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script src="content.js"></script>
-<script src="articles.js"></script>
-<script src="script.js"></script>
+<script src="articles.js?v=3"></script>
+<script src="app.js?v=3"></script>
 </body>
 </html>
