@@ -164,33 +164,68 @@ function initStories() {
     var articles = window.SITE_ARTICLES || [];
     if (!root || !articles.length) return;
 
+    // Single reusable modal, built once and appended to <body>.
+    var eyebrow = el('p', { class: 'modal-eyebrow' });
+    var title = el('h2', { class: 'modal-title' });
+    var glance = el('p', { class: 'modal-glance' });
+    var body = el('div', { class: 'story-body' });
+    var closeBtn = el('button', {
+        class: 'modal-close', type: 'button', 'aria-label': 'Close'
+    }, ['×']);
+    var scroll = el('div', { class: 'modal-scroll' }, [eyebrow, title, glance, body]);
+    var panel = el('div', {
+        class: 'modal-panel', role: 'dialog', 'aria-modal': 'true',
+        'aria-labelledby': 'modal-title'
+    }, [closeBtn, scroll]);
+    title.id = 'modal-title';
+    var overlay = el('div', { class: 'modal-overlay', 'aria-hidden': 'true' }, [panel]);
+    document.body.appendChild(overlay);
+
+    var lastFocus = null;
+
+    function open(item, i) {
+        lastFocus = document.activeElement;
+        eyebrow.textContent = 'Note ' + String(i + 1).padStart(2, '0');
+        title.textContent = item.title;
+        glance.textContent = item.glance || '';
+        glance.style.display = item.glance ? '' : 'none';
+        body.innerHTML = (item.markdown && window.marked) ? marked.parse(item.markdown) : '';
+        scroll.scrollTop = 0;
+        overlay.classList.add('open');
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-lock');
+        closeBtn.focus();
+    }
+
+    function close() {
+        overlay.classList.remove('open');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-lock');
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) close();
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && overlay.classList.contains('open')) close();
+    });
+
     root.appendChild(el('div', { class: 'rows' }, articles.map(function (item, i) {
-        var marker = el('span', { class: 'story-marker', text: '+ read' });
-        var btn = el('button', { class: 'story-toggle', type: 'button' }, [
+        var btn = el('button', { class: 'story-open', type: 'button' }, [
             el('span', { class: 'story-title', text: item.title }),
-            marker
+            el('span', { class: 'story-marker', text: 'read →' })
         ]);
+        btn.addEventListener('click', function () { open(item, i); });
 
-        var parsedHtml = (item.markdown && window.marked) ? marked.parse(item.markdown) : '';
-        var content = el('div', { class: 'story-content' }, [
-            parsedHtml ? el('div', { class: 'story-body', html: parsedHtml }) : null
-        ]);
-
-        var article = el('article', { class: 'row story-item' }, [
+        return el('article', { class: 'row story-item' }, [
             el('div', { class: 'row-label', text: 'note ' + String(i + 1).padStart(2, '0') }),
             el('div', { class: 'row-body' }, [
                 btn,
-                item.glance ? el('p', { class: 'story-glance', text: item.glance }) : null,
-                content
+                item.glance ? el('p', { class: 'story-glance', text: item.glance }) : null
             ])
         ]);
-
-        btn.addEventListener('click', function () {
-            article.classList.toggle('expanded');
-            marker.textContent = article.classList.contains('expanded') ? '− close' : '+ read';
-        });
-
-        return article;
     })));
 }
 
