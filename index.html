@@ -36,7 +36,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..800;1,6..72,400..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=4">
+    <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
 
@@ -44,7 +44,7 @@
     <div class="nav-inner">
         <a class="brand" href="#top">Sumit Jahagirdar</a>
         <nav class="top-nav" aria-label="Sections">
-            <a href="#work" data-section="work">Work</a>
+            <a href="#done" data-section="done">Work</a>
             <a href="#experience" data-section="experience">Experience</a>
             <a href="#writing" data-section="writing">Writing</a>
             <a href="#contact" data-section="contact">Contact</a>
@@ -56,17 +56,34 @@
 
 <main id="top">
 
-    <!-- HERO -->
+    <!-- HERO / OVERVIEW -->
     <section class="hero">
-        <p class="kicker" data-parallax="10">AI Architect / Engineer · Bengaluru</p>
-        <h1>Sumit Jahagirdar</h1>
-        <p class="hero-lead">I build AI agents and the models behind them: fine-tuned LLMs and VLMs, custom detection and embedding models, and agent runtimes designed from first principles. I have spent five years shipping 0-to-1 as the sole technical owner, from scoping to production.</p>
-        <p class="hero-orgs">I am now the Lead Data Scientist at Aays / Aidetic. Before that, I was at GE Healthcare and NVIDIA.</p>
+        <p class="kicker" data-parallax="10">Sumit Jahagirdar · AI Architect / Engineer · Bengaluru</p>
+        <h1>I build AI agents <em>and the models behind them.</em></h1>
+        <div class="rows hero-rows">
+            <div class="row">
+                <div class="row-label">who I am</div>
+                <div class="row-body"><p>I did the core work first: deep learning, computer vision, NLP, speech, and production software engineering. That is why my agents hold up in production: I build the models behind the answers, not just the prompts in front of them. Five years in; now at Aays / Aidetic, before that GE Healthcare and NVIDIA.</p></div>
+            </div>
+            <div class="row">
+                <div class="row-label">what I seek</div>
+                <div class="row-body"><p>0-to-1 systems: agents on real enterprise data, with the models and the runtime both mine. Full-time roles or founding teams.</p></div>
+            </div>
+            <div class="row">
+                <div class="row-label">call me when</div>
+                <div class="row-body"><p>You have a real AI problem and you have lost faith in buzzword AI engineers.</p></div>
+            </div>
+        </div>
         <div class="hero-cta">
             <a class="btn" href="mailto:sumitrj99@gmail.com">Email me</a>
             <a class="btn btn-ghost" href="./Sumit_Jahagirdar_Resume.pdf" download>Download resume</a>
         </div>
-        <p class="hero-next">The projects are below. Agent Factory comes first, in detail; the rest follow in brief.</p>
+    </section>
+
+    <!-- WHAT I HAVE DONE -->
+    <section class="group-head" id="done">
+        <p class="kicker" data-parallax="14">The record</p>
+        <h2 class="group-title">What I have done.</h2>
     </section>
 
     <!-- 01 · AGENT FACTORY -->
