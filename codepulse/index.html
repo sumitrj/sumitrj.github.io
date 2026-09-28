@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CodePulse — a live map of your repo</title>
+<meta name="description" content="CodePulse keeps a live map of everything in your repo and what touches what, across Python, TypeScript, Dockerfile, Terraform, YAML and HTML. You read it in a panel; your AI coding agent reads the same map as tools.">
+<meta property="og:title" content="CodePulse — a live map of your repo">
+<meta property="og:description" content="For developers who work with an AI coding agent in a repo that mixes languages. One map, two readers, six questions.">
+<style>
+  :root {
+    --ink: #111; --paper: #fff; --mut: #5f5f5f; --soft: #e2e2e2; --hush: #f5f5f5; --x: #2a78d6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink: #f0f0ee; --paper: #0d1117; --mut: #a9a8a0; --soft: #2a2f36; --hush: #161b22; --x: #58a0f0; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); }
+  code, pre, .mono { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; }
+  a { color: var(--ink); }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 16px; }
+  section { padding: 52px 0; border-bottom: 1.5px solid var(--ink); }
+  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--mut); font-weight: 600; margin-bottom: 12px; }
+  .lead { font-size: 21px; line-height: 1.45; max-width: 660px; margin-bottom: 20px; }
+  .note { color: var(--mut); font-size: 15px; max-width: 660px; margin-top: 16px; }
+  img.fig { width: 100%; height: auto; display: block; }
+  .figwrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  header.hero { padding: 76px 0 56px; border-bottom: 1.5px solid var(--ink); }
+  .hero h1 { font-size: 40px; letter-spacing: .06em; line-height: 1.1; }
+  .hero .one { font-size: 24px; margin: 18px 0 10px; max-width: 640px; line-height: 1.35; }
+  .hero .who { color: var(--mut); max-width: 640px; }
+  .cta { margin-top: 26px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { display: inline-block; border: 1.5px solid var(--ink); padding: 10px 22px; color: var(--ink); text-decoration: none;
+         font-size: 14px; text-transform: uppercase; letter-spacing: .05em; }
+  .btn.primary, .btn:hover { background: var(--ink); color: var(--paper); }
+
+  /* the toy */
+  #toy { border: 1.5px solid var(--ink); padding: 20px; }
+  .modes { display: flex; gap: 0; margin-bottom: 18px; flex-wrap: wrap; }
+  .modes button { font: inherit; font-size: 13px; text-transform: uppercase; letter-spacing: .05em; padding: 8px 14px;
+                  border: 1.5px solid var(--ink); background: var(--paper); color: var(--ink); cursor: pointer; margin-right: -1.5px; }
+  .modes button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+  .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .col h3 { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--mut); font-weight: 600; margin-bottom: 10px; }
+  .col { display: flex; flex-direction: column; gap: 10px; }
+  .nd { text-align: left; font: 13px ui-monospace, Menlo, Consolas, monospace; color: var(--ink); background: var(--paper);
+        border: 1.5px solid var(--ink); padding: 8px 10px; cursor: pointer; transition: opacity .15s; position: relative; }
+  .nd small { display: block; color: var(--mut); font-size: 11px; }
+  .nd.on { background: var(--ink); color: var(--paper); }
+  .nd.on small { color: var(--paper); opacity: .75; }
+  .nd.hit { border-color: var(--x); box-shadow: inset 0 0 0 1px var(--x); }
+  .nd .hop { position: absolute; top: 7px; right: 8px; font-size: 11px; color: var(--x); }
+  .nd.faded { opacity: .28; }
+  .nd:focus-visible, .modes button:focus-visible { outline: 2px solid var(--x); outline-offset: 2px; }
+  .answers { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+  .answers div { border: 1px solid var(--soft); background: var(--hush); padding: 12px 14px; min-height: 108px; }
+  .answers > div > b { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--mut); margin-bottom: 6px; }
+  .answers pre { white-space: pre-wrap; font-size: 12.5px; line-height: 1.55; }
+  #human { font-size: 15px; }
+
+  .qs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .q { border: 1.5px solid var(--ink); padding: 14px; }
+  .q b { display: block; font-size: 14px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 6px; }
+  .q p { color: var(--mut); font-size: 14px; }
+  .q code { font-size: 12.5px; color: var(--ink); }
+  .qs.two { grid-template-columns: repeat(2, 1fr); }
+
+  .trust { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 28px; }
+  .trust div { border-top: 1.5px solid var(--ink); padding-top: 10px; }
+  .trust b { display: block; margin-bottom: 4px; }
+  .trust p { color: var(--mut); font-size: 14px; }
+
+  pre.install { background: var(--hush); border: 1px solid var(--soft); padding: 16px; overflow-x: auto; line-height: 1.8; }
+  pre.install .c { color: var(--mut); }
+  ul.more { margin: 16px 0 0 18px; color: var(--mut); font-size: 15px; }
+  ul.more li { margin-bottom: 6px; }
+  ul.more b { color: var(--ink); font-weight: 600; }
+
+  footer { padding: 28px 0 60px; color: var(--mut); font-size: 13px; text-transform: uppercase; letter-spacing: .05em; }
+
+  @media (max-width: 720px) {
+    .hero h1 { font-size: 30px; } .hero .one { font-size: 20px; }
+    .cols, .qs, .qs.two, .trust, .answers { grid-template-columns: 1fr; }
+    .cols { gap: 18px; }
+    .figwrap img.fig { width: 640px; max-width: none; }   /* readable; swipe sideways */
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>CODEPULSE</h1>
+    <p class="one">A live map of your repo, for you and your AI coding agent.</p>
+    <p class="who">For developers who work with an AI coding agent in a repo that mixes languages: Python and TypeScript, plus the Dockerfiles, Terraform, and YAML that wire them together.</p>
+    <div class="cta">
+      <a class="btn primary" href="#try">Try it here</a>
+      <a class="btn" href="#tested">How it's tested</a>
+      <a class="btn" href="#start">Get started</a>
+      <a class="btn" href="https://github.com/sumitrj/CodePulse">GitHub</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>The map</h2>
+    <p class="lead">CodePulse keeps one live map of everything in your repo and what touches what, across every language.</p>
+    <div class="figwrap"><img class="fig" src="map.svg" alt="The map of a six-file example repo: a Dockerfile copies app.py, index.html loads cart.ts, checkout calls total, and save_order reads the DB_URL variable declared in Terraform"></div>
+    <p class="note">Six files, five languages. The blue lines are the point: a <code>COPY</code> in a Dockerfile, a <code>&lt;script src&gt;</code>, an <code>os.environ["DB_URL"]</code> that reaches a Terraform variable. A tool that reads one language at a time can't see them.</p>
+  </div>
+</section>
+
+<section id="try">
+  <div class="wrap">
+    <h2>Try it</h2>
+    <p class="lead">Pick something and ask the map about it. This is the example repo above, built from its real map.</p>
+    <div id="toy">
+      <div class="modes" role="group" aria-label="Question">
+        <button type="button" data-mode="breaks" aria-pressed="true">What breaks if I change it?</button>
+        <button type="button" data-mode="who" aria-pressed="false">Who touches it?</button>
+      </div>
+      <div class="cols">
+        <div class="col"><h3>infra.tf · Terraform</h3>
+          <button class="nd" data-id="DB_URL">DB_URL<small>variable</small></button>
+        </div>
+        <div class="col"><h3>app.py · Python</h3>
+          <button class="nd" data-id="main">main<small>function · entry point</small></button>
+          <button class="nd" data-id="checkout">checkout<small>function</small></button>
+          <button class="nd" data-id="save_order">save_order<small>function</small></button>
+        </div>
+        <div class="col"><h3>billing.py · Python</h3>
+          <button class="nd" data-id="total">total<small>function</small></button>
+          <button class="nd" data-id="subtotal">subtotal<small>function</small></button>
+          <button class="nd" data-id="TAX_RATE">TAX_RATE<small>constant</small></button>
+        </div>
+      </div>
+      <div class="answers">
+        <div><b>You see</b><p id="human" aria-live="polite"></p></div>
+        <div><b>Your agent gets</b><pre id="agent"></pre></div>
+      </div>
+    </div>
+    <p class="note">Same map, same answer, whether you click or your agent asks, and fresh: save a file and the next answer includes it. That's the whole idea of two readers:</p>
+    <div class="figwrap"><img class="fig" src="readers.svg" alt="One map, two readers: you in the editor panel, your AI agent over MCP. Both get the same answer" style="margin-top:14px"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>When it helps</h2>
+    <div class="qs two">
+      <div class="q"><b>Before you change something</b><p>Ask <i>what breaks?</i> Everything that depends on it, hop by hop, in any language. <code>pulse_radius</code></p></div>
+      <div class="q"><b>Reviewing a pull request</b><p>Ask <i>what did this touch?</i> Each function the diff added, changed, or deleted, and who uses it. <code>pulse_delta</code></p></div>
+      <div class="q"><b>Your first hour in a repo</b><p>Ask <i>where does it start?</i> The entry points and the code most things depend on, in two calls. <code>pulse_handlers</code> <code>pulse_map</code></p></div>
+      <div class="q"><b>Looking for something</b><p>Ask <i>where does X live?</i> By name, by typo, or by words in a docstring. <code>pulse_locate</code></p></div>
+    </div>
+    <p class="note">When it can't see something (code reached only through dynamic dispatch, or names built from strings), it says so instead of guessing.</p>
+  </div>
+</section>
+
+<section id="tested">
+  <div class="wrap">
+    <h2>How it's tested</h2>
+    <p class="lead">Three kinds of check, all in the repo, all runnable without an API key.</p>
+    <div class="trust">
+      <div><b>Against real bugs</b><p>500 real bug reports from SWE-bench Verified. Given only the issue text, does the map point at the files the fix changed?</p></div>
+      <div><b>Against every language</b><p>Each language ships with a small proof repo and the edges it must produce. If a language can't prove its edges, the test suite fails.</p></div>
+      <div><b>Against its own docs</b><p>Every answer shown for the example repo is checked by a test, so the docs can't drift from the product.</p></div>
+    </div>
+    <div class="figwrap"><img class="fig" src="proof.svg" alt="Difference from keyword search with 95% intervals. Map plus keyword search: right file ranked first +0.046, better. Map alone: right file in top 10 −0.119, worse"></div>
+    <ul class="more">
+      <li><b>Works:</b> map plus keyword search puts the right file first 13% more often than keyword search alone.</li>
+      <li><b>Doesn't:</b> on its own, the map is worse than keyword search.</li>
+      <li><b>Not measured yet:</b> cross-language edges. The benchmark is all Python.</li>
+    </ul>
+    <div class="cta"><a class="btn" href="https://github.com/sumitrj/CodePulse/blob/main/docs/HOW_I_TESTED.md">Read how it was tested</a></div>
+  </div>
+</section>
+
+<section id="start">
+  <div class="wrap">
+    <h2>Get started</h2>
+    <p class="lead">Two commands, once per machine. Needs Python 3.11+ and <a href="https://docs.astral.sh/uv/">uv</a>, on macOS or Linux.</p>
+    <pre class="install"><code>uv tool install git+https://github.com/sumitrj/CodePulse
+codepulse install          <span class="c"># the map in every Claude Code session</span></code></pre>
+    <ul class="more">
+      <li><b>Then just ask.</b> Start Claude Code in any repo, and the first question builds its map.</li>
+      <li><b>See it yourself:</b> <code>codepulse .</code> opens the panel for the repo you're in.</li>
+      <li><b>Stays local.</b> Every tool only reads, and the map lives on your machine.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="https://github.com/sumitrj/CodePulse">github.com/sumitrj/CodePulse</a>
+    &nbsp;·&nbsp; built by <a href="https://sumitrj.github.io">Sumit Jahagirdar</a> &nbsp;·&nbsp; MIT
+  </div>
+</footer>
+
+<script>
+  // examples/shop, as the map sees it: [who, uses what, how] — asserted in the repo's tests/test_example.py
+  const EDGES = [
+    ["save_order", "DB_URL", "reads"],
+    ["checkout", "save_order", "calls"],
+    ["checkout", "total", "calls"],
+    ["main", "checkout", "calls"],
+    ["total", "subtotal", "calls"],
+    ["total", "TAX_RATE", "reads"],
+  ];
+  const FILE = { DB_URL: "infra.tf", main: "app.py", checkout: "app.py", save_order: "app.py",
+                 total: "billing.py", subtotal: "billing.py", TAX_RATE: "billing.py" };
+  const label = (id) => `${FILE[id]} :: ${id}`;
+  let mode = "breaks", current = "DB_URL";
+
+  function radius(target) {                 // breadth-first over "who uses me", with hop depth
+    const depth = new Map(); let frontier = [target], d = 0;
+    while (frontier.length) {
+      d += 1; const next = [];
+      for (const [src, dst] of EDGES)
+        if (frontier.includes(dst) && src !== target && !depth.has(src)) { depth.set(src, d); next.push(src); }
+      frontier = next;
+    }
+    return depth;
+  }
+
+  function render() {
+    const hits = new Map();
+    let human, agent;
+    if (mode === "breaks") {
+      const depth = radius(current);
+      depth.forEach((d, id) => hits.set(id, d));
+      const list = [...depth].sort((a, b) => a[1] - b[1]);
+      human = list.length
+        ? `Change <b>${current}</b> and ${list.length} ${list.length === 1 ? "thing is" : "things are"} at risk: ` +
+          list.map(([id, d]) => `${id} (${d} hop${d > 1 ? "s" : ""})`).join(", ") + "."
+        : `Nothing depends on <b>${current}</b>. ${current === "main" ? "It's where the program starts." : ""}`;
+      agent = list.length
+        ? `Blast radius of ${label(current)}: ${list.length} ${list.length === 1 ? "entity" : "entities"} at risk.\n` +
+          list.map(([id, d]) => `${"  ".repeat(d)}[${d} hop${d > 1 ? "s" : ""}] ${label(id)}`).join("\n")
+        : `Blast radius of ${label(current)}: nothing depends on it directly.`;
+    } else {
+      const incoming = EDGES.filter(([, dst]) => dst === current);
+      incoming.forEach(([src]) => hits.set(src, ""));
+      human = incoming.length
+        ? `<b>${current}</b> is used by ` + incoming.map(([src, , k]) => `${src} (${k})`).join(", ") + "."
+        : `Nothing on the map touches <b>${current}</b>.`;
+      agent = incoming.length
+        ? incoming.map(([src, , k]) => `${label(src).padEnd(24)} --${k}--> ${current}`).join("\n")
+        : `${label(current)}: nothing touches it.`;
+    }
+    document.querySelectorAll(".nd").forEach((n) => {
+      const id = n.dataset.id, on = id === current, hit = hits.has(id);
+      n.classList.toggle("on", on); n.classList.toggle("hit", hit); n.classList.toggle("faded", !on && !hit);
+      n.setAttribute("aria-pressed", on);
+      n.querySelector(".hop")?.remove();
+      if (hit && hits.get(id) !== "") n.insertAdjacentHTML("beforeend", `<span class="hop">${hits.get(id)}</span>`);
+    });
+    document.getElementById("human").innerHTML = human;
+    document.getElementById("agent").textContent = agent;
+  }
+
+  document.querySelectorAll(".nd").forEach((n) => n.addEventListener("click", () => { current = n.dataset.id; render(); }));
+  document.querySelectorAll(".modes button").forEach((b) => b.addEventListener("click", () => {
+    mode = b.dataset.mode;
+    document.querySelectorAll(".modes button").forEach((x) => x.setAttribute("aria-pressed", x === b));
+    render();
+  }));
+  render();
+</script>
+</body>
+</html>
