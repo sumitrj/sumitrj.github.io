@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sumit Jahagirdar | AI Architect / Engineer</title>
-    <meta name="description" content="Sumit Jahagirdar is an AI architect and engineer. Five years building AI agents and the models behind them: scoping, architecture, implementation, and production deployment.">
+    <meta name="description" content="Sumit Jahagirdar builds agentic AI systems on enterprise data, and the harnesses that keep them reliable.">
     <link rel="canonical" href="https://sumitrj.github.io/">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sumitrj.github.io/">
     <meta property="og:title" content="Sumit Jahagirdar | AI Architect / Engineer">
-    <meta property="og:description" content="I build AI agents and the models behind them. Built a production data agent serving 400 users at Docomo Group. Previously GE Healthcare and NVIDIA.">
+    <meta property="og:description" content="I build agentic AI systems on enterprise data, and the harnesses that keep them reliable. Multilingual data agent for 400+ users at DOCOMO Group. Previously GE HealthCare and NVIDIA.">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Sumit Jahagirdar | AI Architect / Engineer">
-    <meta name="twitter:description" content="I build AI agents and the models behind them. Built a production data agent serving 400 users at Docomo Group. Previously GE Healthcare and NVIDIA.">
+    <meta name="twitter:description" content="I build agentic AI systems on enterprise data, and the harnesses that keep them reliable. Multilingual data agent for 400+ users at DOCOMO Group. Previously GE HealthCare and NVIDIA.">
 
     <script type="application/ld+json">
     {
@@ -59,19 +59,15 @@
     <!-- HERO / OVERVIEW -->
     <section class="hero">
         <p class="kicker" data-parallax="10">Sumit Jahagirdar · AI Architect / Engineer · Bengaluru</p>
-        <h1>I build AI agents <em>and the models behind them.</em></h1>
+        <h1>I build agentic AI systems on enterprise data, <em>and the harnesses that keep them reliable.</em></h1>
         <div class="rows hero-rows">
             <div class="row">
                 <div class="row-label">who I am</div>
-                <div class="row-body"><p>I did the core work first: deep learning, computer vision, NLP, speech, and production software engineering. That is why my agents hold up in production: I build the models behind the answers, not just the prompts in front of them. Five years in; now at Aays / Aidetic, before that GE Healthcare and NVIDIA.</p></div>
+                <div class="row-body"><p>My path through deep learning, software engineering, MLOps and AI solutions consulting keeps me grounded and flexible. I pick up new tech stacks and domains fast. I can tell early what AI can and can't do for a problem. I also scope where functional teams are critical to take prototypes live.</p></div>
             </div>
             <div class="row">
                 <div class="row-label">what I seek</div>
-                <div class="row-body"><p>0-to-1 systems: agents on real enterprise data, with the models and the runtime both mine. Full-time roles or founding teams.</p></div>
-            </div>
-            <div class="row">
-                <div class="row-label">call me when</div>
-                <div class="row-body"><p>You have a real AI problem and you have lost faith in buzzword AI engineers.</p></div>
+                <div class="row-body"><p>Helping teams turn valuable AI ideas into production systems people use. I want to own that whole path: problem discovery, evaluation, deployment, and the feedback loop that drives adoption. Open to full-time roles and founding teams.</p></div>
             </div>
         </div>
         <div class="hero-cta">
@@ -83,170 +79,134 @@
     <!-- WHAT I HAVE DONE -->
     <section class="group-head" id="done">
         <p class="kicker" data-parallax="14">The record</p>
-        <h2 class="group-title">What I have done.</h2>
+        <h2 class="group-title">What I&rsquo;ve built.</h2>
     </section>
 
-    <!-- 01 · AGENT FACTORY -->
-    <section class="section" id="agent-factory">
-        <p class="kicker" data-parallax="18">01 · Agent Factory · Docomo Group, at Aays / Aidetic</p>
-        <h2>An agent that answers &ldquo;at what spend should we stop investing in this media?&rdquo;</h2>
-        <p class="prose">That question needs a diminishing-returns model, not a database lookup. Agent Factory runs the model live and answers in plain Japanese. Its 400 production users, across media, retail, CRM, and order management, ask it questions like that one, or &ldquo;which products have customer sentiment at risk?&rdquo;, over 166+ tables and 1,100+ columns of company data.</p>
-        <p class="prose">What makes it different: the business controls which analyses exist. An analyst adds a new analysis, a forecast, a cohort comparison, a clustering model, by filling a form in the UI. The system bends to how the business operates instead of locking it into an off-the-shelf product.</p>
-        <ul class="prose-list">
-            <li>I wrote the orchestration, error handling, and processing primitives from first principles, without an agent framework, and kept them simple enough for an analyst to maintain the system unaided.</li>
-            <li>A Python engine runs the statistical models on live data at query time, inside a runtime that keeps conversation, execution, semantics, and data objects in separate states.</li>
-            <li>Every answer is reproducible and auditable: deterministic lineage, access control on every tool, and evaluation hooks.</li>
-        </ul>
-        <p class="how"><span class="how-label">stack</span>Python, FastAPI, Databricks, LLMs, embeddings.</p>
-    </section>
-
-    <!-- 02 · CLIENT WORK -->
-    <section class="section" id="work">
-        <p class="kicker" data-parallax="18">02 · Client work · Aays / Aidetic</p>
-        <h2>Shipped systems across finance, legal, security, and media.</h2>
-        <p class="section-note">The full detail is in the <a href="./Sumit_Jahagirdar_Resume.pdf" download>resume</a>.</p>
-
+    <section class="section" id="agents">
+        <h2>Agents that answer business questions.</h2>
         <div class="rows">
+            <article class="row">
+                <div class="row-label">DOCOMO Group</div>
+                <div class="row-body">
+                    <h3>Multilingual Data Agent</h3>
+                    <p>Answers advanced analytics questions for DOCOMO telemarketing, in Japanese and English. Built for 400+ users across 166+ tables and 1,100+ columns.</p>
+                    <p class="how"><span class="how-label">how</span>Runs on Databricks, with an agent harness I built from scratch. Tools run as an async DAG. The agent generates and executes code live. Fine-tuned embeddings handle retrieval across both languages. Guardrails, lineage and evals are built in.</p>
+                    <p class="how"><span class="how-label">stack</span>Python, asyncio, Databricks, Spark, Delta Lake, Transformers.</p>
+                </div>
+            </article>
             <article class="row">
                 <div class="row-label">P&amp;G ANZ and Japan</div>
                 <div class="row-body">
-                    <h3>Trade Fund Manager</h3>
-                    <p>P&amp;G sales teams ask plain-language questions about trade funds, the budgets behind retail promotions, and get answers from their data and ML models with no analyst in the loop.</p>
-                    <p class="how"><span class="how-label">how</span>Generalized text-to-SQL with calibrated template tools, long and short-term memory, secure data and tool access.</p>
-                    <p class="how"><span class="how-label">stack</span>Python, LangGraph, LangChain, LLMs, vector DBs.</p>
-                </div>
-            </article>
-            <article class="row">
-                <div class="row-label">73 Strings</div>
-                <div class="row-body">
-                    <h3>Credit Agreement Parser</h3>
-                    <p>Analysts feed in 200+ page credit agreements and get a clean database of terms out: who lends what, under which covenants, on which conditions. There is a <a href="#writing">worked example below</a>.</p>
-                    <p class="how"><span class="how-label">how</span>Text segmentation, cross-reference tracing, clause normalization into predictable schemas.</p>
-                    <p class="how"><span class="how-label">stack</span>Python, LLMs, OCR, document graphs.</p>
-                </div>
-            </article>
-            <article class="row">
-                <div class="row-label">73 Strings</div>
-                <div class="row-body">
-                    <h3>Financial Document Parsing</h3>
-                    <p>Private-equity analysts spend ~90% less effort standardizing fund and company financials.</p>
-                    <p class="how"><span class="how-label">how</span>Multimodal extraction on LayoutLM and RCNN encoders, custom chart-element detection, OCR, chart-to-table reconstruction.</p>
-                    <p class="how"><span class="how-label">stack</span>PyTorch, LayoutLM, RCNN, Transformers, OCR.</p>
-                </div>
-            </article>
-            <article class="row">
-                <div class="row-label">Mihup AI</div>
-                <div class="row-body">
-                    <h3>AI Call Analyzer</h3>
-                    <p>Every support call gets scored on how far the caller strayed from the standard operating procedure, instead of QA sampling a handful.</p>
-                    <p class="how"><span class="how-label">how</span>Whisper ASR with LLM rubric grading, vLLM batching, prompt-redundancy reduction for latency and cost.</p>
-                    <p class="how"><span class="how-label">stack</span>Whisper, vLLM, LLMs, Python.</p>
-                </div>
-            </article>
-            <article class="row">
-                <div class="row-label">Cognizer</div>
-                <div class="row-body">
-                    <h3>Legal Clause Finder</h3>
-                    <p>Lawyers search contracts by meaning rather than keywords, across 1,000+ clause types. There is a <a href="#writing">worked example below</a>.</p>
-                    <p class="how"><span class="how-label">how</span>Clause embeddings trained with contrastive learning, few-shot semantic caching.</p>
-                    <p class="how"><span class="how-label">stack</span>PyTorch, Transformers, embeddings, vector DBs.</p>
-                </div>
-            </article>
-            <article class="row">
-                <div class="row-label">Acko, with Databricks</div>
-                <div class="row-body">
-                    <h3>Vehicle Damage Detection</h3>
-                    <p>Insurers classify vehicle damage from a single photo of the claim.</p>
-                    <p class="how"><span class="how-label">how</span>YOLO detection with LLM-based validation, continuous retraining on MLflow and Delta Lake.</p>
-                    <p class="how"><span class="how-label">stack</span>PyTorch, YOLO, Databricks, MLflow, Delta Lake.</p>
-                </div>
-            </article>
-            <article class="row">
-                <div class="row-label">Panasonic and Aitomatic</div>
-                <div class="row-body">
-                    <h3>Cybersecurity Sentinel</h3>
-                    <p>The system finds vulnerabilities in real code and explains them in security analysts' terms, for the DARPA AI Cyber Challenge.</p>
-                    <p class="how"><span class="how-label">how</span>Fine-tuned Llama models, automated evaluation harnesses against standard benchmarks.</p>
-                    <p class="how"><span class="how-label">stack</span>Llama, PEFT fine-tuning, knowledge graphs, static analysis.</p>
-                </div>
-            </article>
-            <article class="row">
-                <div class="row-label">LoginRadius</div>
-                <div class="row-body">
-                    <h3>Generative AI Video Editor</h3>
-                    <p>Editors cut video by editing the transcript; cloned speech and lip-sync patches fill the gaps.</p>
-                    <p class="how"><span class="how-label">how</span>Whisper word-level alignment, voice cloning, MakeItTalk lip-sync, a timeline reconstruction ledger.</p>
-                    <p class="how"><span class="how-label">stack</span>Whisper, Coqui TTS, MakeItTalk, Python.</p>
-                </div>
-            </article>
-            <article class="row">
-                <div class="row-label">SportzEngage</div>
-                <div class="row-body">
-                    <h3>Ball Tracking</h3>
-                    <p>Coaches get ball trajectory, speed, and bounce point from phone-shot cricket video.</p>
-                    <p class="how"><span class="how-label">how</span>Lightweight edge-optimized detection, temporal smoothing, outlier removal.</p>
-                    <p class="how"><span class="how-label">stack</span>OpenCV, PyTorch.</p>
+                    <h3>Trade Fund Assistant</h3>
+                    <p>Answers trade fund questions for sales teams.</p>
+                    <p class="how"><span class="how-label">how</span>A LangGraph agent with text-to-SQL tools, calibrated templates, conversational memory and secure tool access.</p>
+                    <p class="how"><span class="how-label">stack</span>Python, LangGraph, LangChain, SQL.</p>
                 </div>
             </article>
         </div>
     </section>
 
-    <!-- 03 · OPEN SOURCE -->
-    <section class="section" id="open-source">
-        <p class="kicker" data-parallax="18">03 · Open Source</p>
-        <h2>Two tools I am open-sourcing.</h2>
+    <section class="section" id="documents">
+        <h2>Systems that turn documents into data.</h2>
         <div class="rows">
             <article class="row">
-                <div class="row-label">Data intelligence</div>
+                <div class="row-label">73 Strings</div>
                 <div class="row-body">
-                    <h3>Datalogist</h3>
-                    <p>Datalogist maps a raw warehouse into AI-ready data spaces and schemas, work that usually takes a data team months.</p>
-                    <p class="how"><span class="how-label">how</span>Semantic inference over unstructured partitions, algorithmic table clustering.</p>
-                    <p class="how"><span class="how-label">stack</span>Python, embeddings, clustering algorithms.</p>
+                    <h3>Financial Document Parser</h3>
+                    <p>Automates financial data extraction for private equity analysts, reducing manual effort by ~90%.</p>
+                    <p class="how"><span class="how-label">how</span>YOLO routes each page to the right OCR and table models. Inspectable rule engines clean numbers, units and currencies. Ensemble disagreement flags uncertain values for human review.</p>
+                    <p class="how"><span class="how-label">stack</span>Python, PyTorch, YOLO, LayoutLM, OpenCV.</p>
                 </div>
             </article>
             <article class="row">
-                <div class="row-label">Code intelligence</div>
+                <div class="row-label"></div>
                 <div class="row-body">
-                    <h3>CodePulse</h3>
-                    <p>CodePulse keeps a live map of a repo and what touches what, across languages, for developers and their AI coding agents. There is an <a href="./codepulse/">interactive page</a> and the <a href="https://github.com/sumitrj/CodePulse" target="_blank" rel="noopener">code on GitHub</a>.</p>
-                    <p class="how"><span class="how-label">how</span>One YAML recipe per language, a cross-language graph refreshed on save, served over MCP and a local panel.</p>
-                    <p class="how"><span class="how-label">stack</span>Python, tree-sitter, SQLite, MCP.</p>
+                    <h3>Credit Agreement Parser</h3>
+                    <p>Transforms 200+ page credit agreements into entities in a knowledge graph. There is a <a href="#writing">worked example below</a>.</p>
+                    <p class="how"><span class="how-label">how</span>Identifies clauses, traces cross-references between provisions, and normalizes clause structures for downstream analysis.</p>
+                    <p class="how"><span class="how-label">stack</span>Python, Neo4j.</p>
                 </div>
             </article>
         </div>
     </section>
 
-    <!-- 04 · EXPERIENCE -->
+    <section class="section" id="speech-vision-code">
+        <h2>Speech, vision, and code.</h2>
+        <div class="rows">
+            <article class="row">
+                <div class="row-label">AI CoE</div>
+                <div class="row-body">
+                    <h3>Call Analyzer</h3>
+                    <p>Scores every outbound sales call against its SOP, instead of QA sampling a handful.</p>
+                    <ul class="prose-list">
+                        <li>Whisper transcribes each call; prompt-based rule engines grade it step by step against the SOP.</li>
+                        <li>Served on vLLM with batching and prompt-redundancy reduction: the shared SOP context is cached once, not recomputed per call.</li>
+                        <li>A 4-bit 8B model on one A100 went from ~6,500 to ~29,000 effective input tokens a second on real ~10k-token prompts.</li>
+                    </ul>
+                    <p class="how"><span class="how-label">stack</span>Python, Whisper, vLLM, Databricks.</p>
+                </div>
+            </article>
+            <article class="row">
+                <div class="row-label">AI CoE</div>
+                <div class="row-body">
+                    <h3>Cricket Ball Tracking</h3>
+                    <p>Ball speed and bounce point from ordinary phone video, with no radar or multi-camera rig. There is a <a href="#writing">worked example below</a>.</p>
+                    <ul class="prose-list">
+                        <li>Motion heuristics cut each frame down to candidate crops; a custom lightweight CNN classifies each one as ball or no-ball, even when the ball is a three-pixel blur.</li>
+                        <li>Detections are treated as a noisy time series: velocity limits drop physics-defying outliers, and smoothing gives one clean path per delivery across variable 30 to 60 FPS footage.</li>
+                        <li>Tested on 20 hours of footage, which mapped exactly where it held and where it broke: red shoes, crowded frames, low frame rates.</li>
+                    </ul>
+                    <p class="how"><span class="how-label">stack</span>Python, PyTorch, OpenCV, NumPy, SciPy.</p>
+                </div>
+            </article>
+            <article class="row">
+                <div class="row-label">Open source</div>
+                <div class="row-body">
+                    <h3>CodePulse</h3>
+                    <p>Shows coding agents which files matter. There is an <a href="./codepulse/">interactive page</a> and the <a href="https://github.com/sumitrj/CodePulse" target="_blank" rel="noopener">code on GitHub</a>.</p>
+                    <ul class="prose-list">
+                        <li>A live call graph built with tree-sitter, refreshed on save, across Python, TypeScript, Dockerfiles, Terraform and YAML. It links environment variables read in Python to where Terraform declares them.</li>
+                        <li>One YAML recipe per language, so adding a language is configuration, not code.</li>
+                        <li>Served to agents over MCP and to developers in a VS Code panel.</li>
+                        <li>On 500 SWE-bench issues, the map plus BM25 ranked the fixed file first 13% more often than BM25 alone (recall@1 0.36 to 0.41).</li>
+                    </ul>
+                    <p class="how"><span class="how-label">stack</span>Python, tree-sitter, SQLite, MCP SDK.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
     <section class="section" id="experience">
-        <p class="kicker" data-parallax="18">04 · Experience</p>
+        <p class="kicker" data-parallax="18">Experience</p>
         <h2>Where I have worked.</h2>
         <div class="rows">
             <article class="row">
                 <div class="row-label">Jun 2022 to present</div>
                 <div class="row-body">
-                    <h3>Lead Data Scientist · Aays / Aidetic</h3>
-                    <p>I architect solutions during presales, scope them with the client, and lead a small engineering pod through delivery.</p>
+                    <h3>Lead Data Scientist · Aays</h3>
+                    <p>I architect solutions in presales, scope them with clients, and lead a pod through delivery.</p>
                 </div>
             </article>
             <article class="row">
                 <div class="row-label">Aug 2021 to May 2022</div>
                 <div class="row-body">
-                    <h3>Software Engineer, Edison AI · GE Healthcare</h3>
-                    <p>I built microservices and a unified Python SDK for clinical ML workflows on AWS Lambda and Kubernetes.</p>
+                    <h3>Software Engineer, Edison AI · GE HealthCare</h3>
+                    <p>Built microservices and a Python SDK on AWS Lambda and Kubernetes.</p>
                 </div>
             </article>
             <article class="row">
                 <div class="row-label">Apr 2019 to Apr 2020</div>
                 <div class="row-body">
                     <h3>ML Research Intern · NVIDIA</h3>
-                    <p>I did applied research in medical imaging: few-shot learning and unsupervised clustering for pathology detection. I spoke about this work at <a href="https://event.on24.com/wcc/r/2661799/896A1448EE30E447B088ED88AA458385" target="_blank" rel="noopener">NVIDIA GTC 2020</a>.</p>
+                    <p>Presented few-shot medical imaging work at <a href="https://event.on24.com/wcc/r/2661799/896A1448EE30E447B088ED88AA458385" target="_blank" rel="noopener">GTC 2020</a>.</p>
                 </div>
             </article>
             <article class="row">
                 <div class="row-label">2017 to 2021</div>
                 <div class="row-body">
-                    <h3>B.Tech, Electronics and Communication · VIT Vellore</h3>
+                    <h3>B.Tech, Electronics and Communication Engineering (IoT) · VIT Vellore</h3>
+                    <p>CGPA 8.03. Technical Head, IET VIT; Microsoft Student Ambassador (Top 30, APAC).</p>
                 </div>
             </article>
         </div>
@@ -254,7 +214,7 @@
 
     <!-- 05 · WRITING -->
     <section class="section" id="writing">
-        <p class="kicker" data-parallax="18">05 · Writing</p>
+        <p class="kicker" data-parallax="18">Writing</p>
         <h2>How I think, in long form.</h2>
         <p class="section-note">These are engineering notes from taking AI systems to production.</p>
         <div id="stories-root"></div>
@@ -263,7 +223,7 @@
 
     <!-- 06 · CONTACT -->
     <section class="section" id="contact">
-        <p class="kicker" data-parallax="18">06 · Contact</p>
+        <p class="kicker" data-parallax="18">Contact</p>
         <h2>Write to me.</h2>
         <p class="prose">If this matches what you are hiring for, email is fastest. I reply within a day.</p>
         <div class="rows">
@@ -298,15 +258,15 @@
         <div class="rows">
             <div class="row row-tight">
                 <div class="row-label">AI core</div>
-                <div class="row-body"><p>Deep learning (PyTorch, Transformers), NLP, computer vision (YOLO, OpenCV), speech and signal processing (Whisper/ASR), fine-tuning (LLM/VLM/CNN, PEFT), contrastive learning, diffusion models, OCR, knowledge graphs.</p></div>
+                <div class="row-body"><p>Deep learning (PyTorch, Transformers), NLP, computer vision (YOLO, OpenCV), speech and signal processing (Whisper/ASR), fine-tuning (LLM/CNN, embeddings), OCR, knowledge graphs.</p></div>
             </div>
             <div class="row row-tight">
                 <div class="row-label">Agents &amp; LLMs</div>
-                <div class="row-body"><p>AI agents, agent runtimes, RAG, MCP, evals, LangGraph/LangChain, OpenAI SDK, LiteLLM, vLLM, Ollama, prompt and cost optimization, text-to-SQL.</p></div>
+                <div class="row-body"><p>AI agents, agent harnesses, RAG, MCP, evals, guardrails, LangGraph, OpenAI SDK, vLLM, text-to-SQL.</p></div>
             </div>
             <div class="row row-tight">
                 <div class="row-label">Engineering</div>
-                <div class="row-body"><p>Python, FastAPI, Databricks/Spark, MLflow, Delta Lake, AWS (Lambda, SageMaker), Kubernetes, CI/CD, vector DBs.</p></div>
+                <div class="row-body"><p>Python, FastAPI, Databricks/Spark, MLflow, Delta Lake, AWS (Lambda), Kubernetes, tree-sitter.</p></div>
             </div>
             <div class="row row-tight">
                 <div class="row-label">buzzwords I answer to</div>
